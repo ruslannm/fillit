@@ -6,18 +6,19 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/15 16:42:05 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/15 16:49:29 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/get_next_line.h"
+#include "libft/libft.h"
 #include <stdio.h>
 
 int ft_read(int fd)
 {
 	int 	i;
 	char 	*str; 
-	char	*tet[17];
+	char	tet[17];
 	int		err;
 
 	i = 0;
@@ -35,11 +36,12 @@ int ft_read(int fd)
 			if (ft_strlen(str) != 4)
 				err = 1;
 			else
-				tet[i % 4] = ft_strcpy(&tet[i % 4], str);
+				ft_strcpy(&tet[i % 4], str);
 			i++;
 		}
 		free(str);
 	}
+	return (err);
 }
 
 int main(int argc, char **argv)
