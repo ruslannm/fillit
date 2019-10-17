@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/17 15:56:41 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/17 17:04:55 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,24 @@ int ft_read(int fd)
 
   	i = 0;   
 	err = 0;
-
-	while (get_next_line(fd, &str) == 1)
+	while (get_next_line(fd, &str) == 1 && err == 0)
 	{
-		if (i % 4 != 0)
+		if (i % 5 == 4)
+		{
+			if  (ft_strlen(str) != 0)
+				err = 1;
+				i++;
+		}
+		else
 		{
 			if (ft_strlen(str) != 4)
 				err = 1;
 			else
-				ft_strcpy(&tet[i * 4], str);
+				ft_strcpy(&tet[(i % 5) * 4], str);
 			i++;
-			if (i % 4 == 0)
+			if (i % 5 == 4)
 				printf("tetra =%s=\n", tet);
 		}
-		else if (ft_strlen(str) != 0)
-				err = 1;
 		free(str);
 	}
 	return (err);

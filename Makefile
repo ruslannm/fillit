@@ -6,7 +6,7 @@
 #    By: rgero <rgero@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 15:46:56 by rgero             #+#    #+#              #
-#    Updated: 2019/10/15 18:50:26 by rgero            ###   ########.fr        #
+#    Updated: 2019/10/17 16:05:03 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIB_NAME = libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ_NAME) $(LIB_NAME)
+$(NAME): $(OBJ_NAME)
 	$(CC) -o a.out  $(OBJ_NAME) -L $(LIB_PATH) -lft
 
 %.o: %.c
