@@ -14,12 +14,14 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
+
 int	ft_check_tetra(char *s, t_list **income)
 {
 	int	i;
 	t_list	*new;
 
 	i = 0;
+	
 	while (s[i] != '\0')
 	{
 		if (!(s[i] == '#' || s[i] == '.'))
