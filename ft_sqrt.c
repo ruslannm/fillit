@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dancing_links.c                                 :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/20 16:50:21 by rgero            ###   ########.fr       */
+/*   Created: 2019/10/20 16:46:14 by rgero             #+#    #+#             */
+/*   Updated: 2019/10/20 16:47:12 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-static int  ft_square(int nb)
+int ft_sqrt(int nb)
 {
-    while (-1 == ft_sqrt(nb))
-        nb++;
-}
+	int ret;
+	int sqrt;
 
-
-
-char    *ft_dancing_links(t_list *income, int qnt)
-{
-    t_list  *tmp;
-    int     i;
-
-    tmp = income;
-    i = ft_square(qnt * 4);
-    return("ok\n");
+	ret = 1;
+	sqrt = 0;
+	while (ret <= nb / 2)
+	{
+		sqrt = ret * ret;
+		if (sqrt == nb)
+		{
+			return (ret);
+		}
+		ret = ret + 1;
+	}
+	return (0);
 }
