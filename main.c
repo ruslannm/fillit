@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/20 13:38:04 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/20 14:06:08 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-<<<<<<< HEAD
 int	ft_summa_tetra(char *s)
 {
 	int i;
@@ -39,8 +38,6 @@ int	ft_summa_tetra(char *s)
 	}
 	return (summa == 6 || summa == 8 ? 0 : -1);
 }
-=======
->>>>>>> c91a1f4518dd7d531a097213b4928144b156fa09
 
 int	ft_check_tetra(char *s, t_list **income)
 {
