@@ -6,3 +6,4 @@ main.o
 .DS_Store
 fillit.dSYM/Contents/Info.plist
 fillit.dSYM/Contents/Resources/DWARF/fillit
+libft/libft.a
