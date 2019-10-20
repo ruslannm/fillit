@@ -1,7 +1,8 @@
 test/test.txt
 *.o
 libft/*.o
-.gitingnore
-.DS_Store/**
 a.out
 main.o
+.DS_Store
+fillit.dSYM/Contents/Info.plist
+fillit.dSYM/Contents/Resources/DWARF/fillit
