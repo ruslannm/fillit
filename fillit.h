@@ -13,6 +13,9 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
+#include "libft/get_next_line.h"
+#include "libft/libft.h"
+
 typedef struct		s_link
 {
 	unsigned char	letter;
