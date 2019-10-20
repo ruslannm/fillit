@@ -14,6 +14,7 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
+<<<<<<< HEAD
 int	ft_summa_tetra(char *s)
 {
 	int i;
@@ -38,6 +39,8 @@ int	ft_summa_tetra(char *s)
 	}
 	return (summa == 6 || summa == 8 ? 0 : -1);
 }
+=======
+>>>>>>> c91a1f4518dd7d531a097213b4928144b156fa09
 
 int	ft_check_tetra(char *s, t_list **income)
 {
@@ -45,6 +48,7 @@ int	ft_check_tetra(char *s, t_list **income)
 	t_list	*new;
 
 	i = 0;
+	
 	while (s[i] != '\0')
 	{
 		if (!(s[i] == '#' || s[i] == '.'))
