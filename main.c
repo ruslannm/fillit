@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/20 13:05:00 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/20 13:38:04 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	ft_summa_tetra(char *s)
 		if (s[i] == '#')
 		{
 			if (i + 4 < 16)
-				summa = summa + (s[i + 4] = '#' ? 1 : 0);
+				summa = summa + (s[i + 4] == '#' ? 1 : 0);
 			if (i - 4 >= 0)
-				summa = summa + (s[i - 4] = '#' ? 1 : 0);
-			if (i + 1 < i / 4 + 4)
-				summa = summa + (s[i + 1] = '#' ? 1 : 0);
-			if (i - 1 >= i / 4)
-				summa = summa + (s[i - 1] = '#' ? 1 : 0);
+				summa = summa + (s[i - 4] == '#' ? 1 : 0);
+			if (i + 1 < 4 * (i / 4) + 4)
+				summa = summa + (s[i + 1] == '#' ? 1 : 0);
+			if (i - 1 >= 4 * (i / 4))
+				summa = summa + (s[i - 1] == '#' ? 1 : 0);
 		}
 		i++;
 	}
@@ -84,7 +84,7 @@ int ft_read(int fd, t_list **income)
 		i++;
 		free(str);
 	}
-	return (err == -1 ? err : i);
+	return (err == -1 ? err : (i + 1) / 5);
 }
 
 void	ft_lst_print(t_list *list)
