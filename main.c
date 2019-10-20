@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/20 15:42:32 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/20 16:31:36 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,20 @@ void	ft_lst_print(t_list *list)
 
 int main(int argc, char **argv)
 {
-	int fd;
+	int		fd;
+	int		qnt;
 	t_list	*income;
+	char	*solution;
 
 	if (argc != 2)
 		return (0);
 	fd = open(argv[1], O_RDONLY);
 	if (fd > 0)
 	{
-		printf("qnt tetra=%d\n", ft_read(fd, &income));
+		qnt = ft_read(fd, &income);
+		printf("qnt tetra=%d\n", qnt);
 		ft_lst_print(income);
+		solution = ft_dancing_links(income, qnt);
 	}
+	return (0);
 }
