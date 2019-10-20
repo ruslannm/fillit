@@ -1,1 +1,5 @@
 test/test.txt
+*.o
+libft/*.o
+.gitingnore
+.DS_Store/**
