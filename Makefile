@@ -6,7 +6,7 @@
 #    By: rgero <rgero@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 15:46:56 by rgero             #+#    #+#              #
-#    Updated: 2019/10/17 16:05:03 by rgero            ###   ########.fr        #
+#    Updated: 2019/10/20 14:54:04 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_PATH = ./
-SRC_NAME = main.c 
+SRC_NAME = main.c ft_move_tetra.c
 
 OBJ_PATH = ./
 OBJ_NAME = $(SRC_NAME:.c=.o)
