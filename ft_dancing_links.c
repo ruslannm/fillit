@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/20 16:50:21 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/20 16:53:04 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ static int  ft_square(int nb)
 {
     while (-1 == ft_sqrt(nb))
         nb++;
+    return (nb);
 }
-
-
 
 char    *ft_dancing_links(t_list *income, int qnt)
 {
