@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/20 16:31:36 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/20 16:59:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,13 @@ int ft_read(int fd, t_list **income)
 
 void	ft_lst_print(t_list *list)
 {
-	while (list)
+	t_list	*tmp;
+
+	tmp = list;
+	while (tmp)
     {
-		printf("%s\n", (char *)list->content);
-	   	list = list->next;
+		printf("%s\n", (char *)tmp->content);
+	   	tmp = tmp->next;
 	}
 }
 
