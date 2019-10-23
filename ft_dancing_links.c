@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/23 18:34:36 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/23 18:57:03 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,31 @@ t_link *ft_get_header_min(t_link *root)
 	return (ret);
 }
 
-void	ft_del_row(t_link *link, t_list **stack)
+void	ft_delete_row(t_link *link, t_list **stack)
 {
+	t_link *tmp;
 
-	ft_push
+	tmp = link;
+	while (tmp != link)
+	{
+		tmp->down->up = tmp->up;
+		tmp->up->down = tmp->down;
+		tmp = tmp->right;
+	}
+	ft_push(*stack, link);
+}
 
+void	ft_restore_row(t_list **stack)
+{
+	t_link	*tmp;
+	t_link	*new;
+	
+	new = ft_pop(*stack);
+	tmp = new;
+	while (tmp != new)
+	{
+		tmp->down->up = tmp;
+		tmp->up->down = tmp;
+		tmp = tmp->right;
+	}
 }
