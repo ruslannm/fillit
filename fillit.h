@@ -34,6 +34,14 @@ typedef struct		s_stack
 	struct s_link	*link;
 	struct s_stack	*next;
 }					t_stack;
+typedef struct		s_tetra
+{
+	char			name;
+	struct s_tetra	*left;
+	struct s_tetra	*right;
+	struct s_tetra	*up;
+	struct s_tetra	*down;
+}					t_tetra;
 
 char	*ft_move_tetra(char *s, int len);
 char    *ft_dancing_links(t_list *income, int qnt);
