@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/23 18:10:31 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/23 18:34:36 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,11 @@ t_link *ft_get_header_min(t_link *root)
 			ret = tmp;
 	}
 	return (ret);
+}
+
+void	ft_del_row(t_link *link, t_list **stack)
+{
+
+	ft_push
+
 }

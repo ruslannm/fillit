@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/23 18:11:18 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/23 18:34:05 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ typedef struct		s_link
 }					t_link;
 
 /* можно изпользовать структуру из либф т*/
-typedef struct		s_stack
-{
-	struct s_link	*link;
-	struct s_stack	*next;
-}					t_stack;
 typedef struct		s_tetra
 {
 	char			name;
@@ -46,5 +41,6 @@ typedef struct		s_tetra
 char	*ft_move_tetra(char *s, int len);
 char    *ft_dancing_links(t_list *income, int qnt);
 int 	ft_sqrt(int nb);
+void	ft_push(t_list **stack, t_link *link);
 
 #endif
