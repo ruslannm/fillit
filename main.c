@@ -115,6 +115,7 @@ int main(int argc, char **argv)
 		qnt = ft_read(fd, &income);
 		printf("qnt tetra=%d\n", qnt);
 		ft_lst_print(income);
+		ft_place_tetra((char *)(income->content), 'A', 5);
 		solution = ft_dancing_links(income, qnt);
 	}
 	return (0);
