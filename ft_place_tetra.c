@@ -13,20 +13,20 @@
 #include <stdio.h>
 #include "fillit.h"
 
-t_tetra *ft_create_blank_line()
+t_link  *ft_create_blank_line()
 {
     int     i;
-    t_tetra *ptr;
-    t_tetra *next;
+    t_link *ptr;
+    t_link *next;
 
-    if (!(ptr = (t_tetra *)malloc(sizeof(t_tetra))))
+    if (!(ptr = (t_link *)malloc(sizeof(t_link))))
         return (NULL);
     ptr->left = ptr;
     ptr->right = ptr ;
     i = 1;
-    while (i < 4)
+    while (i < 5)
     {
-        if (!(next = (t_tetra *)malloc(sizeof(t_tetra))))
+        if (!(next = (t_link *)malloc(sizeof(t_link))))
             return (NULL);
         next->left = ptr;
         next->right = ptr->right;
@@ -37,28 +37,73 @@ t_tetra *ft_create_blank_line()
     return (ptr);
 }
 
-char    *ft_place_tetra(char *tetra, char name, int size)
+int     ft_check_fit(char *tet, int pt, int size)
+{
+    int i;
+
+    i = 0;
+    while (i < 16)
+    {
+        if (tet[i] == '#')
+            if (pt % size + i % 4 >= size || pt / size + i / 4 >= size)
+                return (0);
+        i++;
+    }
+    return (1);
+}
+
+void    ft_print_field(t_link *ptr, int size)
+{
+    int i;
+    int j;
+    int pt;
+
+    i = 0;
+    j = 0;
+    while (i < size)
+    {
+        while (j < size)
+        {
+            pt = i * j;
+            if (pt == (int)ptr->bit || pt == (int)ptr->right->bit ||
+                    pt == (int)ptr->right->right->bit || pt == (int)ptr->right->right->right->bit)
+                printf("A");
+            else
+                printf("-");
+            j++;
+        }
+        i++;
+        printf("\n");
+    }
+}
+
+void    ft_place_tetra(char *tet, char name, int size)
 {
     int     i;
-    int     point;
-    int     col;
-    int     line;
-    int     addr;
-
-    point = 0;
-    while (point < size * size)
+    int     pt;
+    t_link  *ptr;
+    
+    pt = 0;
+    while (pt < size * size)
     {
-        i = 0;
-        while (i < 16) 
+        if (ft_check_fit(tet, pt, size))
         {
-            if (tetra[i] == '#')
-                if ((col = point % size + i % 4) < size &&
-                         (line = point / size + i / 4) < size)
-                    addr = line * size + col;
-                else
-                    err = 1;
-            i++;
+            ptr = ft_create_blank_line();
+            i = 0;
+            while (i < 16) 
+            {
+                if (tet[i] == '#')
+                {
+                    ptr->bit = (unsigned char)(pt + i / 4 * size + i % 4);
+                    printf("%d\t", pt + i / 4 * size + i % 4);
+                    ptr->letter = name;
+                    ptr = ptr->right;
+                }
+                i++;
+            }
+            printf("\n");
         }
-        point++;
+/*        ft_print_field(ptr, size);*/
+        pt++;
     }
 }
