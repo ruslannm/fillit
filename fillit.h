@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/23 18:34:05 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/23 18:54:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ char	*ft_move_tetra(char *s, int len);
 char    *ft_dancing_links(t_list *income, int qnt);
 int 	ft_sqrt(int nb);
 void	ft_push(t_list **stack, t_link *link);
+t_link	*ft_pop(t_list **stack);
 
 #endif
