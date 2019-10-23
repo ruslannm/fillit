@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/23 18:57:03 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/23 19:14:53 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,15 @@ char    *ft_dancing_links(t_list *income, int qnt)
 {
 	t_list  *tmp;
 	int     len;
+	t_link	*root;
+	t_link	*solution;
+	t_list	*solution;
 
 	tmp = income;
 	len = ft_square(qnt * 4);
 	
+	tmp = ft_get_header_min(root);
+
 	return("ok\n");
 }
 
@@ -65,21 +70,30 @@ t_link *ft_get_header_min(t_link *root)
 	return (ret);
 }
 
-void	ft_delete_row(t_link *link, t_list **stack)
+void	ft_delete_dl(t_link *link, t_list **stack, char *type)
 {
 	t_link *tmp;
 
 	tmp = link;
 	while (tmp != link)
 	{
-		tmp->down->up = tmp->up;
-		tmp->up->down = tmp->down;
-		tmp = tmp->right;
+		if (type == "row")
+		{
+			tmp->down->up = tmp->up;
+			tmp->up->down = tmp->down;
+			tmp = tmp->right;
+		}
+		else
+		{
+			tmp->right->left = tmp->left;
+			tmp->left->right = tmp->right;
+			tmp = tmp->down;
+		}
 	}
 	ft_push(*stack, link);
 }
 
-void	ft_restore_row(t_list **stack)
+void	ft_restore_dl(t_list **stack, char *type)
 {
 	t_link	*tmp;
 	t_link	*new;
@@ -88,8 +102,17 @@ void	ft_restore_row(t_list **stack)
 	tmp = new;
 	while (tmp != new)
 	{
-		tmp->down->up = tmp;
-		tmp->up->down = tmp;
-		tmp = tmp->right;
+		if (type == "row")
+		{
+			tmp->down->up = tmp;
+			tmp->up->down = tmp;
+			tmp = tmp->right;
+		}
+		else
+		{
+			tmp->right->left = tmp;
+			tmp->left->right = tmp;
+			tmp = tmp->down;
+		}
 	}
 }
