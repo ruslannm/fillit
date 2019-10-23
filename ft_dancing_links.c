@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/23 19:14:53 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/23 19:45:48 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,29 @@ char    *ft_dancing_links(t_list *income, int qnt)
 	t_list  *tmp;
 	int     len;
 	t_link	*root;
-	t_link	*solution;
+	t_link	*row;
+	t_link	*tmp_row;
+	t_link	*tmp_row_delete;
+	t_link	*tmp_column;
 	t_list	*solution;
+	t_list	*stack_delete;
 
 	tmp = income;
 	len = ft_square(qnt * 4);
 	
-	tmp = ft_get_header_min(root);
-
+	// ft_get_header_min(root); get column with min bit
+	row = (ft_get_header_min(root))->down; //first row for solution
+	tmp_row = row;
+	while (tmp_row->right != row)
+	{
+		tmp_column = tmp_row;
+		while (tmp_column->down != tmp_row)
+		{
+			ft_delete_dl(tmp_column, &stack_delete, "row");
+			tmp_column = tmp_column->down;
+		}
+		tmp_row = tmp_row->right;
+	}
 	return("ok\n");
 }
 
