@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/24 17:53:12 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/24 19:38:42 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,17 @@ static int  ft_square(int nb)
 	return (ft_sqrt(nb));
 }
 
-char    *ft_dancing_links(t_list *income, int qnt)
+int    ft_dancing_links(t_link *root, t_list **solution)
 {
-	t_list  *tmp;
-	int     len;
-	t_link	*root;
 	t_link	*row;
 	t_link	*tmp_row;
 	t_link	*tmp_row_delete;
 	t_link	*tmp_column;
-	t_list	*solution;
 	t_list	*stack_delete;
 
-	tmp = income;
-	len = ft_square(qnt * 4);
+	//tmp = income;
+	//len = ft_square(qnt * 4);
 	
-	// ft_get_header_min(root); get column with min bit
 	row = (ft_get_header_min(root))->down; //first row for solution
 	tmp_row = row;
 	ft_move_same_letter(tmp_row, &stack_delete);   //delete row with same letter
@@ -46,23 +41,30 @@ char    *ft_dancing_links(t_list *income, int qnt)
 			ft_delete_dl(tmp_column, &stack_delete, "row"); //delete row with same place
 			tmp_column = tmp_column->down;
 		}
-		
+		ft_delete_dl(tmp_row->root_top, &stack_delete, "column"); //delete column from header
 		tmp_row = tmp_row->right;
 	}
-	
-	return("ok\n");
+	ft_push(&solution, row);
+	if (root->right == root)
+		return (1);
+	if (ft_count_row())
+	if (ft_dancing_links(root, &(*solution)))
+	;
 }
 
-int		ft_count_row(t_link *header)
+int		ft_count_row(t_link *top, char *mask)
 {
 	t_link	*tmp;
 	int		i;
 
-	tmp = header;
+	tmp = top;
 	i = 0;
-	while (tmp->down != header)
+	while (tmp->down != top)
 	{
-		i++;
+		if (mask == "all")
+			i++;
+		else if (tmp->root_side->letter >= 'A' && tmp->root_side->letter <='Z')
+			i++;
 		tmp = tmp->down;
 	}
 	return (i);
@@ -77,14 +79,16 @@ t_link *ft_get_header_min(t_link *root)
 
 	i = 0;
 	ret = NULL;
-	amount_row = ft_count_row(root);
+	amount_row = ft_count_row(root, "tetra");
 	tmp = root;
 	while ((tmp = tmp->right) != root)
 	{
-		i = ft_count_row(tmp);
+		i = ft_count_row(tmp, "tetra");
 		if (i < amount_row)
 			ret = tmp;
 	}
+	if (!ret && root->right != root)
+		ret = root->right;  //work when tetra is missing
 	return (ret);
 }
 
@@ -95,7 +99,7 @@ void	ft_delete_dl(t_link *link, t_list **stack, char *type)
 	tmp = link;
 	while (tmp != link)
 	{
-		if (type == "row")
+		if (type == "row" && tmp->root_side->letter != 0) //defence deleting header
 		{
 			tmp->down->up = tmp->up;
 			tmp->up->down = tmp->down;
@@ -105,7 +109,6 @@ void	ft_delete_dl(t_link *link, t_list **stack, char *type)
 		{
 			tmp->right->left = tmp->left;
 			tmp->left->right = tmp->right;
-			tmp = tmp->down;
 		}
 	}
 	ft_push(*stack, link);
