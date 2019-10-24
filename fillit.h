@@ -44,7 +44,7 @@ int 	ft_sqrt(int nb);
 void    ft_place_tetra(char *tet, char name, int size);
 void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
-t_link	*ft_create_blank_line();
+t_link	*ft_create_blank_line(int len);
 void	ft_push(t_list **stack, t_link *link);
 t_link	*ft_pop(t_list **stack);
 
