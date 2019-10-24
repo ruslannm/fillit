@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_PATH = ./
-SRC_NAME = main.c ft_move_tetra.c ft_dancing_links.c ft_sqrt.c ft_place_tetra.c
+SRC_NAME = main.c ft_move_tetra.c ft_sqrt.c ft_place_tetra.c
 
 OBJ_PATH = ./
 OBJ_NAME = $(SRC_NAME:.c=.o)

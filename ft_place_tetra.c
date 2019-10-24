@@ -13,18 +13,18 @@
 #include <stdio.h>
 #include "fillit.h"
 
-t_link  *ft_create_blank_line()
+t_link  *ft_create_blank_line(int len)
 {
     int     i;
-    t_link *ptr;
-    t_link *next;
+    t_link  *ptr;
+    t_link  *next;
 
     if (!(ptr = (t_link *)malloc(sizeof(t_link))))
         return (NULL);
     ptr->left = ptr;
     ptr->right = ptr ;
     i = 1;
-    while (i < 5)
+    while (i < len)
     {
         if (!(next = (t_link *)malloc(sizeof(t_link))))
             return (NULL);
@@ -54,27 +54,28 @@ int     ft_check_fit(char *tet, int pt, int size)
 
 void    ft_print_field(t_link *ptr, int size)
 {
-    int i;
-    int j;
-    int pt;
+    int     pt;
+    int     i;
+    char    c;
 
-    i = 0;
-    j = 0;
-    while (i < size)
+    pt = 0;
+    while (pt < size * size)
     {
-        while (j < size)
+        c = '-';
+        i = 0;
+        while (i < 4)
         {
-            pt = i * j;
-            if (pt == (int)ptr->bit || pt == (int)ptr->right->bit ||
-                    pt == (int)ptr->right->right->bit || pt == (int)ptr->right->right->right->bit)
-                printf("A");
-            else
-                printf("-");
-            j++;
+            if (pt == ptr->bit)
+                c = ptr->letter;
+            ptr = ptr->right;
+            i++;
         }
-        i++;
-        printf("\n");
+        printf("%c ", c);
+        if (pt % size == size - 1)
+            printf("\n");
+        pt++;
     }
+    printf("\n");
 }
 
 void    ft_place_tetra(char *tet, char name, int size)
@@ -88,22 +89,27 @@ void    ft_place_tetra(char *tet, char name, int size)
     {
         if (ft_check_fit(tet, pt, size))
         {
-            ptr = ft_create_blank_line();
+            ptr = ft_create_blank_line(4);
             i = 0;
             while (i < 16) 
             {
                 if (tet[i] == '#')
                 {
                     ptr->bit = (unsigned char)(pt + i / 4 * size + i % 4);
-                    printf("%d\t", pt + i / 4 * size + i % 4);
                     ptr->letter = name;
                     ptr = ptr->right;
                 }
                 i++;
             }
-            printf("\n");
+            ft_print_field(ptr, size);
         }
-/*        ft_print_field(ptr, size);*/
         pt++;
     }
 }
+
+/*
+t_link  *ft_create_matrix(t_list *income, int size)
+{
+
+} 
+*/
