@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/23 19:46:04 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/24 17:53:12 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct		s_link
 	struct s_link	*right;	
 	struct s_link	*up;	
 	struct s_link	*down;
-	struct s_link	*root;	
+	struct s_link	*root_top;
+	struct s_link	*root_side;
 }					t_link;
 
 /* можно изпользовать структуру из либф т*/
