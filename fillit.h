@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/24 17:53:12 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/25 16:01:39 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int     ft_check_fit(char *tet, int pt, int size);
 t_link	*ft_create_blank_line(int len);
 void	ft_push(t_list **stack, t_link *link);
 t_link	*ft_pop(t_list **stack);
+void	ft_move_same_bits(t_link *row, t_link **stack);
 
 #endif
