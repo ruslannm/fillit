@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/24 17:53:12 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:02:21 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ typedef struct		s_tetra
 char	*ft_move_tetra(char *s, int len);
 char    *ft_dancing_links(t_list *income, int qnt);
 int 	ft_sqrt(int nb);
-void    ft_place_tetra(char *tet, char name, int size);
 void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
 t_link	*ft_create_blank_line(int len);
 void	ft_push(t_list **stack, t_link *link);
 t_link	*ft_pop(t_list **stack);
+t_link	*ft_fill_matrix(t_list *income, int size);
+t_link	*ft_init_header(int size);
+t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter);
+void    ft_print_matrix(t_link *root);
 
 #endif

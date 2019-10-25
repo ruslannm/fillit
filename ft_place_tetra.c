@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_place_tetra.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/22 17:08:44 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:41:51 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_link  *ft_create_blank_line(int len)
     if (!(ptr = (t_link *)malloc(sizeof(t_link))))
         return (NULL);
     ptr->left = ptr;
-    ptr->right = ptr ;
+    ptr->right = ptr;
+    ptr->root_side = ptr;
     i = 1;
     while (i < len)
     {
@@ -32,6 +33,7 @@ t_link  *ft_create_blank_line(int len)
         next->right = ptr->right;
         ptr->right = next;
         next->right->left = next;
+        next->root_side = ptr;
         i++;
     }
     return (ptr);
@@ -59,9 +61,10 @@ void    ft_print_field(t_link *ptr, int size)
     char    c;
 
     pt = 0;
+    ptr = ptr->right;
     while (pt < size * size)
     {
-        c = '-';
+        c = 31;
         i = 0;
         while (i < 4)
         {
@@ -70,7 +73,7 @@ void    ft_print_field(t_link *ptr, int size)
             ptr = ptr->right;
             i++;
         }
-        printf("%c ", c);
+        printf("%c ", c + 64);
         if (pt % size == size - 1)
             printf("\n");
         pt++;
@@ -78,38 +81,119 @@ void    ft_print_field(t_link *ptr, int size)
     printf("\n");
 }
 
-void    ft_place_tetra(char *tet, char name, int size)
+void    ft_print_matrix(t_link *root)
 {
-    int     i;
-    int     pt;
     t_link  *ptr;
-    
-    pt = 0;
-    while (pt < size * size)
+
+    printf("Size = %d\n", root->bit);
+    ptr = root->right;
+    while (ptr->root_side != ptr)
     {
-        if (ft_check_fit(tet, pt, size))
-        {
-            ptr = ft_create_blank_line(4);
-            i = 0;
-            while (i < 16) 
-            {
-                if (tet[i] == '#')
-                {
-                    ptr->bit = (unsigned char)(pt + i / 4 * size + i % 4);
-                    ptr->letter = name;
-                    ptr = ptr->right;
-                }
-                i++;
-            }
-            ft_print_field(ptr, size);
-        }
-        pt++;
+        printf("%d ", ptr->bit);
+        ptr = ptr->right;
+    }
+    printf("\n");
+    ptr = root->down;
+    while (ptr->root_top != ptr)
+    {
+        printf("%d-%d\t", ptr->letter, ptr->bit);
+        printf("%d-%d\t", ptr->right->letter, ptr->right->bit);
+        printf("%d-%d\t", ptr->right->right->letter, ptr->right->right->bit);
+        printf("%d-%d\t", ptr->right->right->right->letter, ptr->right->right->right->bit);
+        printf("%d-%d\t", ptr->right->right->right->right->letter, ptr->right->right->right->right->bit);
+        printf("\n");
+        ptr = ptr->down;
     }
 }
 
-/*
-t_link  *ft_create_matrix(t_list *income, int size)
+t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
 {
+    int     i;
+    t_link  *new;
+    t_link  *rt;
 
-} 
-*/
+    if (!(new = ft_create_blank_line(5)))
+        return (NULL);
+    new->letter = letter;
+    new->bit = 99;
+    new->up = root->up;
+    new->down = root;
+    root->up->down = new;
+    root->up = new;
+    new = new->right;
+    i = 0;
+    while (i < 16)
+    {
+        if (tet[i] == '#')
+        {
+            new->bit = (unsigned char)(pt + i / 4 * root->bit + i % 4);
+            new->letter = letter;
+            
+            rt = root;
+            while (rt->bit != new->bit)
+                rt = rt->right;
+            new->up = rt->up;
+            new->down = rt;
+            rt->up->down = new;
+            rt->up = new;
+            new = new->right;
+        }
+        i++;
+    }
+/*    ft_print_field(new, root->bit);*/
+    return (new);
+}
+
+t_link  *ft_init_header(int size)
+{
+    t_link          *root;
+    t_link          *ptr;
+    unsigned char   i;
+    
+    if ((!(root = ft_create_blank_line(size * size + 1))) || size > 15)
+        return (NULL);
+    root->letter = 0;
+    root->bit = size;
+    root->up = root;
+    root->down = root;
+    root->root_top = root;
+    ptr = root->right;
+    i = 0;
+    while (i < size * size)
+    {
+        ptr->letter = 0;
+        ptr->bit = i;
+        ptr->up = ptr;
+        ptr->down = ptr;
+        ptr->root_top = ptr;
+        ptr = ptr->right;
+        i++;
+    }
+    return (root);
+}
+
+t_link  *ft_fill_matrix(t_list *income, int size)
+{
+    int             pt;
+    t_link          *root;
+    unsigned char   letter;
+
+    if (!(root = ft_init_header(size)))
+        return (NULL);
+    letter = 1;
+    while (income)
+    {
+        pt = 0;
+        printf("tetra: \'%s\' letter: %d\n", income->content, letter);
+        while (pt < size * size)
+        {
+            if (ft_check_fit((char *)income->content, pt, size))
+                if (!(ft_add_tetra(root, (char *)income->content, pt, letter)))
+                    return (NULL);
+            pt++;
+        }
+        letter++;
+        income = income->next;
+    }
+    return (root);
+}

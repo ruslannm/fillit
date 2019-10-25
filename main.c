@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/20 16:59:37 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/25 18:02:21 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int main(int argc, char **argv)
 	int		fd;
 	int		qnt;
 	t_list	*income;
+	t_link	*root;
 /*	char	*solution;
 */
 	if (argc != 2)
@@ -115,7 +116,8 @@ int main(int argc, char **argv)
 		qnt = ft_read(fd, &income);
 		printf("qnt tetra=%d\n", qnt);
 		ft_lst_print(income);
-		ft_place_tetra((char *)(income->content), 'A', 7);
+		root = ft_fill_matrix(income, 5);
+		ft_print_matrix(root);
 /*		solution = ft_dancing_links(income, qnt);
 */	}
 	return (0);
