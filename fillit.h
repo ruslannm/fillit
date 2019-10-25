@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/25 18:02:21 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:53:09 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,20 @@ typedef struct		s_tetra
 }					t_tetra;
 
 char	*ft_move_tetra(char *s, int len);
-char    *ft_dancing_links(t_list *income, int qnt);
+int		ft_dancing_links(t_link *root, t_list **solution);
 int 	ft_sqrt(int nb);
 void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
 t_link	*ft_create_blank_line(int len);
-void	ft_push(t_list **stack, t_link *link);
+/*void	ft_push(t_list **stack, t_link *link);
 t_link	*ft_pop(t_list **stack);
 t_link	*ft_fill_matrix(t_list *income, int size);
 t_link	*ft_init_header(int size);
 t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter);
 void    ft_print_matrix(t_link *root);
+*/
+void	ft_move_same_bits(t_link *row, t_link **stack_row, t_link **stack_top);
+void	ft_delete_dl(t_link *link, t_list **stack, char *type);
+void	ft_undo_move(t_list *stack_row, t_list *stack_top, t_list *solution);
 
 #endif

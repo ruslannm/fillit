@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack.c                                         :+:      :+:    :+:   */
+/*   ft_stack_pop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/23 18:52:52 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/25 17:11:47 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,7 @@ static void	ft_del(void *content, size_t len)
 	free(content);
 }
 
-void	ft_push(t_list **stack, t_link *link)
-{
-	t_list	*tmp;
-    t_list  *new;
-
-    new = ft_lstnew(link, sizeof(link));
-    if (*stack == NULL)
-		*stack = new;
-	else
-	{
-	    tmp = *stack;
-		while (tmp->next)
-        	tmp = tmp->next;
-		tmp->next = new;
-	}
-}
-
-t_link	*ft_pop(t_list **stack)
+static t_link	*ft_pop(t_list **stack)
 {
 	t_list	*tmp;
     t_link  *ret;
@@ -51,4 +34,37 @@ t_link	*ft_pop(t_list **stack)
         ft_lstdel(*stack, &ft_del);
         return (ret);
 	}
+}
+
+static void	ft_restore_dl(t_list **stack, char *type)
+{
+	t_link	*tmp;
+	t_link	*new;
+	
+	new = ft_pop(*stack);
+	tmp = new;
+	if (type == "row")
+	{
+		while (tmp != new)
+		{
+			tmp->down->up = tmp;
+			tmp->up->down = tmp;
+			tmp = tmp->right;
+		}
+	}
+	else
+	{
+		tmp->right->left = tmp;
+		tmp->left->right = tmp;
+	}
+}
+
+void    ft_undo_move(t_list *stack_row, t_list *stack_top, t_list *solution)
+{
+	while (stack_row)
+		ft_restore_dl(&stack_row, "row");
+	while (stack_top)	
+    	ft_restore_dl(&stack_top, "column");
+    ft_restore_dl(&solution, "row");
+
 }
