@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/25 16:01:39 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/25 17:12:24 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@ typedef struct		s_tetra
 }					t_tetra;
 
 char	*ft_move_tetra(char *s, int len);
-char    *ft_dancing_links(t_list *income, int qnt);
+int		ft_dancing_links(t_link *root, t_list **solution);
 int 	ft_sqrt(int nb);
 void    ft_place_tetra(char *tet, char name, int size);
 void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
 t_link	*ft_create_blank_line(int len);
-void	ft_push(t_list **stack, t_link *link);
+/*void	ft_push(t_list **stack, t_link *link);
 t_link	*ft_pop(t_list **stack);
-void	ft_move_same_bits(t_link *row, t_link **stack);
+*/
+void	ft_move_same_bits(t_link *row, t_link **stack_row, t_link **stack_top);
+void	ft_delete_dl(t_link *link, t_list **stack, char *type);
+void	ft_undo_move(t_list *stack_row, t_list *stack_top, t_list *solution);
 
 #endif
