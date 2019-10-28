@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 16:50:37 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/28 19:37:09 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ static t_link	*ft_pop(t_list **stack)
 	    tmp = *stack;
 		ret = tmp->content;
 		*stack = (*stack)->next;
-        ft_lstdel(tmp, &ft_del);
+        ft_lstdel(&tmp, &ft_del);
         return (ret);
 	}
 }
 
-static void	ft_restore_dl(t_list **stack, char *type)
+static void	ft_restore_dl(t_list **stack, char type)
 {
 	t_link	*tmp;
 	t_link	*new;
 	
-	new = ft_pop(*stack);
+	new = ft_pop(&(*stack));
 	tmp = new;
-	if (type == "row")
+	if (type == 'r')
 	{
 		while (tmp != new)
 		{
@@ -58,12 +58,12 @@ static void	ft_restore_dl(t_list **stack, char *type)
 	}
 }
 
-void    ft_undo_move(t_list *stack_row, t_list *stack_top, t_list *solution)
+void    ft_undo_move(t_list **stack_row, t_list **stack_top, t_list **solution)
 {
-	while (stack_row)
-		ft_restore_dl(&stack_row, "row");
-	while (stack_top)	
-    	ft_restore_dl(&stack_top, "column");
-    ft_restore_dl(&solution, "row");
+	while (*stack_row)
+		ft_restore_dl(stack_row, 'r');
+	while (*stack_top)	
+    	ft_restore_dl(stack_top, 'c');
+    ft_restore_dl(solution, 'r');
 
 }
