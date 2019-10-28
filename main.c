@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/25 18:02:21 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/28 15:11:25 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int main(int argc, char **argv)
 		qnt = ft_read(fd, &income);
 		printf("qnt tetra=%d\n", qnt);
 		ft_lst_print(income);
-		root = ft_fill_matrix(income, 5);
+		root = ft_fill_matrix(income, 4);
 		ft_print_matrix(root);
 /*		solution = ft_dancing_links(income, qnt);
 */	}
