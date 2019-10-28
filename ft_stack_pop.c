@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/25 17:11:47 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/28 16:50:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ static t_link	*ft_pop(t_list **stack)
 	else
 	{
 	    tmp = *stack;
-		while (tmp->next)
-        	tmp = tmp->next;
 		ret = tmp->content;
-        ft_lstdel(*stack, &ft_del);
+		*stack = (*stack)->next;
+        ft_lstdel(tmp, &ft_del);
         return (ret);
 	}
 }
