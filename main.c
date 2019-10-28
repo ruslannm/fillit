@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 15:11:25 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/28 16:58:58 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "fillit.h"
+
+static int  ft_square(int nb)
+{
+	while (0 == ft_sqrt(nb))
+		nb++;
+	return (ft_sqrt(nb));
+}
 
 int	ft_summa_tetra(char *s)
 {
