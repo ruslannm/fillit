@@ -6,13 +6,13 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 15:29:30 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/25 17:12:39 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/28 19:40:19 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	ft_move_same_bit(t_link *row, t_link **stack_row, t_link **stack_top)
+static void	ft_move_same_bit(t_link *row, t_list **stack_row, t_list **stack_top)
 {
 	t_link  *root_top;
 	t_link  *row_to_stack;
@@ -23,14 +23,14 @@ static void	ft_move_same_bit(t_link *row, t_link **stack_row, t_link **stack_top
 	{
 		row_to_stack = row_to_stack->down;
 		if (row_to_stack == row->root_top)
-			ft_delete_dl(row_to_stack, *stack_row, "column");
+			ft_delete_dl(row_to_stack, &(*stack_row), 'c');
 		else
-			ft_delete_dl(row_to_stack, *stack_top, "row");
+			ft_delete_dl(row_to_stack, &(*stack_top), 'r');
 		row_to_stack = row_to_stack->down;
 	}
 }
 
-void		ft_move_same_bits(t_link *row, t_link **stack_row, t_link **stack_top)
+void		ft_move_same_bits(t_link *row, t_list **stack_row, t_list **stack_top)
 {
 	t_link  *tmp;
 	t_link  *root_side;

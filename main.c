@@ -6,14 +6,14 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 16:58:58 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/28 19:47:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "fillit.h"
 
-static int  ft_square(int nb)
+static int  ft_square_len(int nb)
 {
 	while (0 == ft_sqrt(nb))
 		nb++;
@@ -107,25 +107,50 @@ void	ft_lst_print(t_list *list)
 	}
 }
 
+int		ft_solution(t_list *income, int square_len)
+{
+	t_link	*root;
+	int		ret;
+	t_list	*solution;
+
+	root = ft_fill_matrix(income, square_len);
+	ft_print_matrix(root);
+
+	//return (1);
+	ret = ft_dancing_links(root, root->right->down, &solution);
+	if (0 == ret)
+		ret = ft_solution(income, square_len + 1);
+	else
+	{
+		/* TODO convert t_list  to tab and print tab */
+		printf("return solution =%d=\n", ret);
+	}
+	return (ret);
+}
+
 int main(int argc, char **argv)
 {
 	int		fd;
 	int		qnt;
+	int		square_len;
 	t_list	*income;
-	t_link	*root;
-/*	char	*solution;
-*/
+
 	if (argc != 2)
 		return (0);
 	fd = open(argv[1], O_RDONLY);
 	if (fd > 0)
 	{
 		qnt = ft_read(fd, &income);
-		printf("qnt tetra=%d\n", qnt);
-		ft_lst_print(income);
-		root = ft_fill_matrix(income, 4);
-		ft_print_matrix(root);
-/*		solution = ft_dancing_links(income, qnt);
-*/	}
+		if (qnt < 0)
+			ft_putstr("error\n");
+		else
+		{
+			square_len = ft_square_len(qnt * 4);
+			printf("qnt tetra=%d, square len =%d \n", qnt, square_len);
+			ft_lst_print(income);
+			ft_solution(income, square_len);
+		}
+		close(fd);
+	}
 	return (0);
 }
