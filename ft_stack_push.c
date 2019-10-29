@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/29 15:49:13 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/29 17:34:20 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void		ft_delete_dl(t_link *link, t_list **stack, char type)
 			tmp->up->down = tmp->down;
 			tmp = tmp->right;
 		}
+		tmp->down->up = tmp->up;
+		tmp->up->down = tmp->down;
 	}
 	else
 	{

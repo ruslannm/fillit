@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/29 16:33:45 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/29 17:12:16 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void    ft_print_matrix(t_link *root)
             printf(" %d", line->bit);
         line = line->right;
     }
-    printf(" Pointer line\n");
+    printf(" Pointer    \n");
     
     line = root->down;
     while (line->root_top != line)
@@ -158,6 +158,7 @@ t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
             rt = root->right;
             while (rt->bit != new->bit)
                 rt = rt->right;
+            new->root_top = rt;
             new->up = rt->up;
             new->down = rt;
             rt->up->down = new;
