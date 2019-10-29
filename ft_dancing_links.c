@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 19:33:54 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/29 15:51:19 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int    ft_dancing_links(t_link *root, t_link *row, t_list **solution)
 	ft_move_same_letter(row, &stack_delete_row);   //delete row with same letter
 	ft_move_same_bits(row, &stack_delete_row, &stack_delete_top);
 	ft_delete_dl(row, &(*solution), 'r'); //move_to_solution  r - row
- 	ret = ft_check_column(root);
+ 	ft_print_matrix(root);
+	ret = ft_check_column(root);
 	if (ret == 1)
 		return (1);
 	else if (ret == -1)

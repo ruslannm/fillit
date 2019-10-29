@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 19:38:09 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/29 15:49:13 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		ft_delete_dl(t_link *link, t_list **stack, char type)
 	tmp = link;
 	if (type == 'r' && tmp->root_side->letter != 0) //defence deleting header
 	{	
-		while (tmp != link)
+		while (tmp->right != link)
 		{
 			tmp->down->up = tmp->up;
 			tmp->up->down = tmp->down;
