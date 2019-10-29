@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/28 15:59:52 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/28 16:58:36 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,7 @@ t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
         if (tet[i] == '#')
         {
             new->bit = (unsigned char)(pt + i / 4 * root->bit + i % 4);
-            new->letter = letter;
-            
+            new->letter = letter;   
             rt = root->right;
             while (rt->bit != new->bit)
                 rt = rt->right;
@@ -154,7 +153,6 @@ t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
         }
         i++;
     }
-/*    ft_print_field(new, root->bit);*/
     return (new);
 }
 
@@ -186,6 +184,18 @@ t_link  *ft_init_header(int size)
         i++;
     }
     return (root);
+}
+
+ft_add_dummy(t_link *root, unsigned char letter)
+{
+    int i;
+
+    while (letter <= root->bit * root->bit)
+    {
+        
+        letter++;
+    }
+
 }
 
 t_link  *ft_fill_matrix(t_list *income, int size)
