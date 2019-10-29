@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/29 17:34:20 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/29 18:34:03 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_push(t_list **stack, t_link *link)
 {
 	t_list  *new;
 
-	new = ft_lstnew(link, sizeof(link));
+	new = ft_lstnew(link, sizeof(*link));
 	if (*stack == NULL)
 		*stack = new;
 	else
