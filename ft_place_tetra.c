@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_place_tetra.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/28 15:59:52 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:33:45 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,25 +87,37 @@ void    ft_print_matrix(t_link *root)
     t_link  *line;
     t_link  *ptr;
 
-    printf("Size = %d\n", root->bit);
+    printf("Size = %d\nHeader\nLetter ", root->bit);
+    line = root->right;
+    while (line != root)
+    {
+        if (line->bit < 10)
+            printf("  %d", line->bit);
+        else
+            printf(" %d", line->bit);
+        line = line->right;
+    }
+    printf(" Pointer line\n");
+    
     line = root->down;
     while (line->root_top != line)
     {
+        printf("     %d ", line->letter);
         column = root->right;
         ptr = line->right;
         while (column->root_side != column)
         {
             if (column->bit == ptr->bit)
             {
-                printf(" %d", ptr->letter);
+                printf("  %d", ptr->letter);
                 ptr = ptr->right;
             }
             else
-                printf(" -");
+                printf("  -");
             column = column->right;
         }
+        printf(" %p\n", line);
         line = line->down;
-        printf("\n");
     }
     ptr = root->down;
     while (ptr->root_top != ptr)

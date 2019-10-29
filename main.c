@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 19:47:33 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/29 16:14:46 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,23 @@ void	ft_lst_print(t_list *list)
 	}
 }
 
+char	*ft_tab(t_list *solution, int square_len)
+{
+	char	*ret;
+	t_list	*tmp;
+	t_link	*link;
+
+	ret = (char *)malloc(square_len * square_len + 1);
+	tmp = solution;
+	while (tmp)
+	{
+		link = tmp->content;
+		printf("letter=%d, bit=%d\n", link->letter, link->bit);
+		tmp = tmp->next;
+	}
+	return (ret);
+}
+
 int		ft_solution(t_list *income, int square_len)
 {
 	t_link	*root;
@@ -117,12 +134,14 @@ int		ft_solution(t_list *income, int square_len)
 	ft_print_matrix(root);
 
 	//return (1);
+	solution = NULL;
 	ret = ft_dancing_links(root, root->right->down, &solution);
 	if (0 == ret)
 		ret = ft_solution(income, square_len + 1);
 	else
 	{
 		/* TODO convert t_list  to tab and print tab */
+		ft_tab(solution, square_len);
 		printf("return solution =%d=\n", ret);
 	}
 	return (ret);
