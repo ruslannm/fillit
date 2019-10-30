@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/30 15:05:39 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:14:02 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct		s_link
 {
 	unsigned char	letter;
 	unsigned char	bit;
-	unsigned char	header;  //qnt row
 	struct s_link	*left;	
 	struct s_link	*right;	
 	struct s_link	*up;	
@@ -30,7 +29,7 @@ typedef struct		s_link
 }					t_link;
 
 char	*ft_move_tetra(char *s, int len);
-int		ft_dancing_links(t_link *root, t_link *row, t_list **solution);
+int		ft_dancing_links(t_link *root, t_link *row, t_list **solution, int qnt);
 int 	ft_sqrt(int nb);
 void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
