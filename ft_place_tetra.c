@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/29 12:06:54 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:00:43 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,72 +54,32 @@ int     ft_check_fit(char *tet, int pt, int size)
     return (1);
 }
 
-void    ft_print_field(t_link *ptr, int size)
+t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
 {
-    int     pt;
     int     i;
-    char    c;
+    t_link  *new;
+    t_link  *rt;
 
-    pt = 0;
-    ptr = ptr->right;
-    while (pt < size * size)
+    if (!(new = ft_create_blank_line(5)))
+        return (NULL);
+    new->letter = letter;
+    new->bit = 99;
+    new = new->right;
+    i = 0;
+    while (i < 16)
     {
-        c = 31;
-        i = 0;
-        while (i < 4)
+        if (tet[i] == '#')
         {
-            if (pt == ptr->bit)
-                c = ptr->letter;
-            ptr = ptr->right;
-            i++;
+            new->bit = (unsigned char)(pt + i / 4 * root->bit + i % 4);
+            new->letter = letter;   
+            new = new->right;
         }
-        printf("%c ", c + 64);
-        if (pt % size == size - 1)
-            printf("\n");
-        pt++;
+        i++;
     }
-    printf("\n");
+    return (new);
 }
 
-void    ft_print_matrix(t_link *root)
-{
-    t_link  *column;
-    t_link  *line;
-    t_link  *ptr;
-
-    printf("Size = %d\n", root->bit);
-    line = root->down;
-    while (line->root_top != line)
-    {
-        column = root->right;
-        ptr = line->right;
-        while (column->root_side != column)
-        {
-            if (column->bit == ptr->bit)
-            {
-                printf(" %d", ptr->letter);
-                ptr = ptr->right;
-            }
-            else
-                printf(" -");
-            column = column->right;
-        }
-        line = line->down;
-        printf("\n");
-    }
-    ptr = root->down;
-    while (ptr->root_top != ptr)
-    {
-        printf("%d-%d\t", ptr->letter, ptr->bit);
-        printf("%d-%d\t", ptr->right->letter, ptr->right->bit);
-        printf("%d-%d\t", ptr->right->right->letter, ptr->right->right->bit);
-        printf("%d-%d\t", ptr->right->right->right->letter, ptr->right->right->right->bit);
-        printf("%d-%d\t", ptr->right->right->right->right->letter, ptr->right->right->right->right->bit);
-        printf("\n");
-        ptr = ptr->down;
-    }
-}
-
+/*
 t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
 {
     int     i;
@@ -145,6 +105,7 @@ t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
             rt = root->right;
             while (rt->bit != new->bit)
                 rt = rt->right;
+            new->root_top = rt;
             new->up = rt->up;
             new->down = rt;
             rt->up->down = new;
@@ -154,7 +115,7 @@ t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
         i++;
     }
     return (new);
-}
+}*/
 
 t_link  *ft_init_header(int size)
 {
@@ -186,18 +147,33 @@ t_link  *ft_init_header(int size)
     return (root);
 }
 
-ft_add_to_matrix(t_link *root, t_link *line)
+int     ft_add_to_matrix(t_link *root, t_link *line)
 {
     line->up = root->up;
     line->down = root;
     line->root_top = root;
     root->up->down = line;
     root->up = line;
-    
+
     line = line->right;
+    root = root->right;
+    while (line->root_side != line)
+    {
+        while (root->bit != line->bit && root->root_side != root)
+            root = root->right;
+        if (root->root_side == root)
+            return (0);
+        line->up = root->up;
+        line->down = root;
+        line->root_top = root;
+        root->up->down = line;
+        root->up = line;
+        line = line->right;
+    }
+    return (1);
 }
 
-ft_add_dummy(t_link *root, unsigned char letter)
+int     ft_add_dummy(t_link *root, unsigned char letter)
 {
     int             i;
     unsigned char   pt;
@@ -210,16 +186,17 @@ ft_add_dummy(t_link *root, unsigned char letter)
         while (pt < root->bit * root->bit)
         {
             if (!(new = ft_create_blank_line(2)))
-                return (NULL);
-            new->letter = letter;
+                return (0);
+            new->letter = letter + i;
             new->bit = 99;
-            new->right->letter = letter;
+            new->right->letter = letter + i;
             new->right->bit = pt;
             ft_add_to_matrix(root, new);
             pt++;
         }
         i++;
     }
+    return (1);
 }
 
 t_link  *ft_fill_matrix(t_list *income, int size)
@@ -244,5 +221,6 @@ t_link  *ft_fill_matrix(t_list *income, int size)
         }
         income = income->next;
     }
+    ft_add_dummy(root, letter);
     return (root);
 }
