@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/29 18:33:31 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/30 16:33:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,15 @@ void	ft_put_solution(t_list *solution, int square_len)
 	tmp = solution;
 	while (tmp)
 	{
-		i = 0;
 		link = tmp->content;
-		while (i < square_len)
+		link = link->right;
+		while (link != link->root_side)
 		{
-			ret[link->bit] = link->letter + 64;
+			if (link->letter > 26)
+				ret[link->bit] = 32;
+			else
+				ret[link->bit] = link->letter + 64;
 			link = link->right;
-			i++;
 		}
 		tmp = tmp->next;
 	}
@@ -136,7 +138,7 @@ void	ft_put_solution(t_list *solution, int square_len)
 	}
 }
 
-int		ft_solution(t_list *income, int square_len)
+int		ft_solution(t_list *income, int square_len, int qnt)
 {
 	t_link	*root;
 	int		ret;
@@ -145,9 +147,9 @@ int		ft_solution(t_list *income, int square_len)
 	root = ft_fill_matrix(income, square_len);
 	ft_print_matrix(root);
 	solution = NULL;
-	ret = ft_dancing_links(root, root->right->down, &solution);
+	ret = ft_dancing_links(root, root->right->down, &solution, qnt);
 	if (0 == ret)
-		ret = ft_solution(income, square_len + 1);
+		ret = ft_solution(income, square_len + 1, qnt);
 	else
 		ft_put_solution(solution, square_len);
 	return (ret);
@@ -173,7 +175,7 @@ int main(int argc, char **argv)
 			square_len = ft_square_len(qnt * 4);
 			printf("qnt tetra=%d, square len =%d \n", qnt, square_len);
 			ft_lst_print(income);
-			ft_solution(income, square_len);
+			ft_solution(income, square_len, qnt);
 		}
 		close(fd);
 	}
