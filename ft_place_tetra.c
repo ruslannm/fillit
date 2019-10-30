@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/28 16:58:36 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/29 12:06:54 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,16 +186,40 @@ t_link  *ft_init_header(int size)
     return (root);
 }
 
+ft_add_to_matrix(t_link *root, t_link *line)
+{
+    line->up = root->up;
+    line->down = root;
+    line->root_top = root;
+    root->up->down = line;
+    root->up = line;
+    
+    line = line->right;
+}
+
 ft_add_dummy(t_link *root, unsigned char letter)
 {
-    int i;
+    int             i;
+    unsigned char   pt;
+    t_link          *new;
 
-    while (letter <= root->bit * root->bit)
+    i = 1;
+    while (i <= root->bit * root->bit - letter * 4)
     {
-        
-        letter++;
+        pt = 0;
+        while (pt < root->bit * root->bit)
+        {
+            if (!(new = ft_create_blank_line(2)))
+                return (NULL);
+            new->letter = letter;
+            new->bit = 99;
+            new->right->letter = letter;
+            new->right->bit = pt;
+            ft_add_to_matrix(root, new);
+            pt++;
+        }
+        i++;
     }
-
 }
 
 t_link  *ft_fill_matrix(t_list *income, int size)
@@ -206,10 +230,11 @@ t_link  *ft_fill_matrix(t_list *income, int size)
 
     if (!(root = ft_init_header(size)))
         return (NULL);
-    letter = 1;
+    letter = 0;
     while (income)
     {
         pt = 0;
+        letter++;
         while (pt < size * size)
         {
             if (ft_check_fit((char *)income->content, pt, size))
@@ -217,7 +242,6 @@ t_link  *ft_fill_matrix(t_list *income, int size)
                     return (NULL);
             pt++;
         }
-        letter++;
         income = income->next;
     }
     return (root);
