@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgero <rgero@student.42.fr>                +#+  +:+       +#+         #
+#    By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 15:46:56 by rgero             #+#    #+#              #
-#    Updated: 2019/10/28 19:39:05 by rgero            ###   ########.fr        #
+#    Updated: 2019/10/30 13:14:41 by fprovolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRC_PATH = ./
 SRC_NAME = main.c ft_move_tetra.c ft_sqrt.c ft_place_tetra.c \
 	ft_dancing_links.c	ft_stack_pop.c ft_stack_push.c \
-	ft_move_same_bits.c ft_move_same_letter.c
+	ft_move_same_bits.c ft_move_same_letter.c ft_print_matrix.c
 
 OBJ_PATH = ./
 OBJ_NAME = $(SRC_NAME:.c=.o)
