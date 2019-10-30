@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/30 15:26:21 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:09:02 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,10 +139,12 @@ t_link  *ft_init_header(int size)
 int     ft_add_dummy(t_link *root, unsigned char letter)
 {
     unsigned char   pt;
+    unsigned char   len;
     t_link          *new;
 
     pt = 0;
-    while (pt < root->bit * root->bit)
+    len = root->bit * root->bit;
+    while (pt < len && letter * 4 < len)
     {
         if (!(new = ft_create_blank_line(2)))
             return (0);
