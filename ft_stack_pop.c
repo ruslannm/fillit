@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 19:37:09 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/30 17:22:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	ft_del(void *content, size_t len)
 {
-	ft_bzero(content, len);
-	free(content);
+	//ft_bzero(content, len);
+	if (len > 0)
+		free(content);
 }
 
 static t_link	*ft_pop(t_list **stack)

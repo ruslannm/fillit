@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 15:29:30 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/29 18:14:13 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/30 18:25:05 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,11 @@ static void	ft_move_same_bit(t_link *row, t_list **stack_row, t_list **stack_top
 void		ft_move_same_bits(t_link *row, t_list **stack_row, t_list **stack_top)
 {
 	t_link  *tmp;
-	t_link  *root_side;
 
-	tmp = row;
-	root_side = row->root_side;
-	while (tmp->right != row)
+	tmp = row->right;
+	while (tmp != row)
 	{
-		if (root_side != tmp)
+		if (row->root_side != tmp)
 			ft_move_same_bit(tmp, &(*stack_row), &(*stack_top));
 		tmp = tmp->right;
 	}
