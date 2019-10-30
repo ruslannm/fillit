@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 19:35:17 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/30 15:05:39 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ typedef struct		s_link
 	struct s_link	*root_top;
 	struct s_link	*root_side;
 }					t_link;
-
-/* можно изпользовать структуру из либф т*/
-typedef struct		s_tetra
-{
-	char			name;
-	struct s_tetra	*left;
-	struct s_tetra	*right;
-	struct s_tetra	*up;
-	struct s_tetra	*down;
-}					t_tetra;
 
 char	*ft_move_tetra(char *s, int len);
 int		ft_dancing_links(t_link *root, t_link *row, t_list **solution);
