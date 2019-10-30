@@ -6,17 +6,31 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/29 18:34:03 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/30 19:37:16 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	ft_push(t_list **stack, t_link *link)
+static t_stack	*ft_stacknew(t_link *link)
 {
-	t_list  *new;
+	t_stack *ret;
 
-	new = ft_lstnew(link, sizeof(*link));
+	if (!(ret = (t_stack*)malloc(sizeof(t_stack))))
+		return (NULL);
+	if (!link)
+		ret->link = NULL;
+	else
+		ret->link = link;
+	ret->next = NULL;
+	return (ret);
+}
+
+static void	ft_push(t_stack **stack, t_link *link)
+{
+	t_stack  *new;
+
+	new = ft_stacknew(link);
 	if (*stack == NULL)
 		*stack = new;
 	else
@@ -26,14 +40,15 @@ static void	ft_push(t_list **stack, t_link *link)
 	}
 }
 
-void		ft_delete_dl(t_link *link, t_list **stack, char type)
+void		ft_delete_dl(t_link *link, t_stack **stack, char type)
 {
 	t_link *tmp;
 
 	tmp = link;
-	if (type == 'r' && tmp->root_side->letter != 0) //defence deleting header
+	if (type == 'r' && tmp->letter != 0) //defence deleting header
 	{	
-		while (tmp->right != link)
+		tmp = link->right;
+		while (tmp != link)
 		{
 			tmp->down->up = tmp->up;
 			tmp->up->down = tmp->down;
