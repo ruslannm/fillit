@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/30 16:33:37 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/30 19:51:52 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,10 @@ void	ft_lst_print(t_list *list)
 	}
 }
 
-void	ft_put_solution(t_list *solution, int square_len)
+void	ft_put_solution(t_stack *solution, int square_len)
 {
 	char	*ret;
-	t_list	*tmp;
+	t_stack	*tmp;
 	t_link	*link;
 	int		i;
 
@@ -118,7 +118,7 @@ void	ft_put_solution(t_list *solution, int square_len)
 	tmp = solution;
 	while (tmp)
 	{
-		link = tmp->content;
+		link = tmp->link;
 		link = link->right;
 		while (link != link->root_side)
 		{
@@ -142,7 +142,7 @@ int		ft_solution(t_list *income, int square_len, int qnt)
 {
 	t_link	*root;
 	int		ret;
-	t_list	*solution;
+	t_stack	*solution;
 
 	root = ft_fill_matrix(income, square_len);
 	ft_print_matrix(root);
