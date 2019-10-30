@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/30 16:37:08 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:41:54 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ t_link  *ft_create_blank_line(int len)
     while (i < len)
     {
         if (!(next = (t_link *)malloc(sizeof(t_link))))
+        {
+            ft_free_line(ptr);
             return (NULL);
+        }
         next->left = ptr;
         next->right = ptr->right;
         ptr->right->left = next;
@@ -37,6 +40,34 @@ t_link  *ft_create_blank_line(int len)
         i++;
     }
     return (ptr);
+}
+
+void    ft_free_line(t_link *line)
+{
+    t_link  *del;
+
+    line = line->right;
+    while (line != line->root_side)
+    {
+        del = line;
+        line = line->right;
+        free(del);
+    }
+    free(line);
+}
+
+void    ft_free_matrix(t_link *ptr)
+{
+    t_link  *del;
+
+    ptr = ptr->down;
+    while(ptr != ptr->root_top)
+    {
+        del = ptr;
+        ptr = ptr->down;
+        ft_free_line(del);
+    }
+    ft_free_line(ptr);
 }
 
 int     ft_check_fit(char *tet, int pt, int size)
@@ -102,7 +133,8 @@ t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
         }
         i++;
     }
-    ft_add_to_matrix(root, new);
+    if (!(ft_add_to_matrix(root, new)))
+        return (NULL);
     return (new);
 }
 
@@ -114,13 +146,7 @@ t_link  *ft_init_header(int size)
     
     if ((!(root = ft_create_blank_line(size * size + 1))) || size > 15)
         return (NULL);
-    root->letter = 0;
-    root->bit = size;
-    root->up = root;
-    root->down = root;
-    root->root_top = root;
-    root->root_side = root;
-    ptr = root->right;
+    ptr = root;
     i = 0;
     while (i < size * size)
     {
@@ -129,9 +155,11 @@ t_link  *ft_init_header(int size)
         ptr->up = ptr;
         ptr->down = ptr;
         ptr->root_top = ptr;
-        ptr->root_side = root;
+        if (ptr->root_side == ptr)
+            ptr->bit = size;
+        else
+            i++;
         ptr = ptr->right;
-        i++;
     }
     return (root);
 }
