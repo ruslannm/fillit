@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/28 19:47:33 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/29 18:33:31 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,35 @@ void	ft_lst_print(t_list *list)
 	}
 }
 
+void	ft_put_solution(t_list *solution, int square_len)
+{
+	char	*ret;
+	t_list	*tmp;
+	t_link	*link;
+	int		i;
+
+	ret = (char *)malloc(square_len * square_len + 1);
+	tmp = solution;
+	while (tmp)
+	{
+		i = 0;
+		link = tmp->content;
+		while (i < square_len)
+		{
+			ret[link->bit] = link->letter + 64;
+			link = link->right;
+			i++;
+		}
+		tmp = tmp->next;
+	}
+	i = 0;
+	while (i < square_len)
+	{	
+		write(1, &ret[(i++) * square_len], square_len);
+		write(1, "\n", 1);
+	}
+}
+
 int		ft_solution(t_list *income, int square_len)
 {
 	t_link	*root;
@@ -115,16 +144,12 @@ int		ft_solution(t_list *income, int square_len)
 
 	root = ft_fill_matrix(income, square_len);
 	ft_print_matrix(root);
-
-	//return (1);
+	solution = NULL;
 	ret = ft_dancing_links(root, root->right->down, &solution);
 	if (0 == ret)
 		ret = ft_solution(income, square_len + 1);
 	else
-	{
-		/* TODO convert t_list  to tab and print tab */
-		printf("return solution =%d=\n", ret);
-	}
+		ft_put_solution(solution, square_len);
 	return (ret);
 }
 
