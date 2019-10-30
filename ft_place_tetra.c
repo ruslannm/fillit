@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/30 15:54:21 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/30 17:08:53 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,16 +139,18 @@ t_link  *ft_init_header(int size)
 int     ft_add_dummy(t_link *root, unsigned char letter)
 {
     unsigned char   pt;
+    unsigned char   len;
     t_link          *new;
 
     pt = 0;
-    while (pt < root->bit * root->bit)
+    len = root->bit * root->bit;
+    while (pt < len && letter * 4 < len)
     {
         if (!(new = ft_create_blank_line(2)))
             return (0);
-        new->letter = letter + pt + 1;
+        new->letter = 27 + pt;
         new->bit = 99;
-        new->right->letter = letter + pt + 1;
+        new->right->letter = 27 + pt;
         new->right->bit = pt;
         ft_add_to_matrix(root, new);
         pt++;
