@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/31 14:28:19 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:03:54 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	ft_delete_dl(t_link *link, t_stack **stack, char type);
 void    ft_undo_move(t_stack **stack_row, t_stack **stack_top, t_stack **solution);
 void    ft_move_same_letter(t_link *row, t_stack **stack);
 void	ft_move_same_bits(t_link *row, t_stack **stack_row, t_stack **stack_top);
+int		ft_push(t_stack **stack, t_link *link);
 
 #endif
