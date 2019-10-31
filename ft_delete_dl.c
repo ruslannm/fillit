@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_push.c                                    :+:      :+:    :+:   */
+/*   ft_delete_dl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/31 15:04:40 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/31 15:04:18 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static t_stack	*ft_stacknew(t_link *link)
+void		ft_delete_dl(t_link *link, t_stack **stack, char type)
 {
-	t_stack *ret;
+	t_link *tmp;
 
-	if (!(ret = (t_stack*)malloc(sizeof(t_stack))))
-		return (NULL);
-	if (!link)
-		ret->link = NULL;
-	else
-		ret->link = link;
-	ret->next = NULL;
-	return (ret);
-}
-
-int				ft_push(t_stack **stack, t_link *link)
-{
-	t_stack  *new;
-
-	new = ft_stacknew(link);
-	if (!new)
-		return (0);
-	if (*stack == NULL)
-		*stack = new;
+	tmp = link;
+	if (type == 'r' && tmp->letter != 0) //defence deleting header
+	{	
+		tmp = link->right;
+		while (tmp != link)
+		{
+			tmp->down->up = tmp->up;
+			tmp->up->down = tmp->down;
+			tmp = tmp->right;
+		}
+		tmp->down->up = tmp->up;
+		tmp->up->down = tmp->down;
+	}
 	else
 	{
-		new->next = *stack;
-		*stack = new;
+		tmp->right->left = tmp->left;
+		tmp->left->right = tmp->right;
 	}
-	return (1);
+	ft_push(&(*stack), link);
 }
