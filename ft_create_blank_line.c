@@ -6,13 +6,13 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:55:51 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/31 14:28:19 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/31 17:14:30 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_link  *ft_create_blank_line(int len)
+t_link  *ft_create_blank_line(int len, t_stack **matrix_stk)
 {
     int     i;
     t_link  *ptr;
@@ -20,6 +20,9 @@ t_link  *ft_create_blank_line(int len)
 
     if (!(ptr = (t_link *)malloc(sizeof(t_link))))
         return (NULL);
+
+
+
     ptr->left = ptr;
     ptr->right = ptr;
     ptr->root_side = ptr;
