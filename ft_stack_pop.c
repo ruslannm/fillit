@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/30 19:42:42 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/31 15:11:32 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ static void	ft_restore_dl(t_stack **stack, char type)
 
 void    ft_undo_move(t_stack **stack_row, t_stack **stack_top, t_stack **solution)
 {
-	while (*stack_row)
-		ft_restore_dl(stack_row, 'r');
+	ft_restore_dl(solution, 'r');
 	while (*stack_top)	
 		ft_restore_dl(stack_top, 'c');
-    ft_restore_dl(solution, 'r');
+ 	while (*stack_row)
+		ft_restore_dl(stack_row, 'r');
 }
