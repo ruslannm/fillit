@@ -6,7 +6,7 @@
 #    By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 15:46:56 by rgero             #+#    #+#              #
-#    Updated: 2019/10/30 13:14:41 by fprovolo         ###   ########.fr        #
+#    Updated: 2019/10/31 14:39:34 by fprovolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_PATH = ./
-SRC_NAME = main.c ft_move_tetra.c ft_sqrt.c ft_place_tetra.c \
+SRC_NAME = main.c ft_move_tetra.c ft_sqrt.c ft_fill_matrix.c \
 	ft_dancing_links.c	ft_stack_pop.c ft_stack_push.c \
-	ft_move_same_bits.c ft_move_same_letter.c ft_print_matrix.c
+	ft_move_same_bits.c ft_move_same_letter.c ft_print_matrix.c \
+	ft_create_blank_line.c ft_add_dummy.c
 
 OBJ_PATH = ./
 OBJ_NAME = $(SRC_NAME:.c=.o)

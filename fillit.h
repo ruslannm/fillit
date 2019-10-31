@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/30 19:55:11 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/31 14:28:19 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
 t_link	*ft_create_blank_line(int len);
 void	ft_free_line(t_link *line);
+void	ft_free_matrix(t_link *root);
 t_link	*ft_fill_matrix(t_list *income, int size);
 t_link	*ft_init_header(int size);
-int		ft_add_to_matrix(t_link *root, t_link *line);
+void	ft_add_to_matrix(t_link *root, t_link *line);
 t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter);
-int		ft_add_dummy(t_link *root, unsigned char letter);
+t_link	*ft_add_dummy(t_link *root, unsigned char letter);
 void    ft_print_matrix(t_link *root);
 void	ft_delete_dl(t_link *link, t_stack **stack, char type);
 void    ft_undo_move(t_stack **stack_row, t_stack **stack_top, t_stack **solution);
