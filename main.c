@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/31 18:02:42 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/31 18:22:06 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,10 @@ int		ft_solution(t_list *income, int square_len, int qnt)
 	t_link	*root;
 	int		ret;
 	t_stack	*solution;
+	t_stack	*matrix_stk;
 
-	root = ft_fill_matrix(income, square_len);
+	matrix_stk = NULL;
+	root = ft_fill_matrix(income, square_len, &matrix_stk);
 	ft_print_matrix(root);
 	solution = NULL;
 	ret = ft_dancing_links(root, root->down, &solution, qnt);
