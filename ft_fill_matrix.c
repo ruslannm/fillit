@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_place_tetra.c                                   :+:      :+:    :+:   */
+/*   ft_fill_matrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/31 14:28:19 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/10/31 17:14:30 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter)
     return (new);
 }
 
-t_link  *ft_init_header(int size)
+t_link  *ft_init_header(int size, t_stack **matrix_stk)
 {
     t_link          *root;
     t_link          *ptr;
     unsigned char   i;
     
-    if ((!(root = ft_create_blank_line(size * size + 1))) || size > 15)
+    if ((!(root = ft_create_blank_line(size * size + 1, matrix_stk))) || size > 15)
         return (NULL);
     ptr = root;
     i = 0;
@@ -107,13 +107,13 @@ t_link  *ft_init_header(int size)
     return (root);
 }
 
-t_link  *ft_fill_matrix(t_list *income, int size)
+t_link  *ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk)
 {
     int             pt;
     t_link          *root;
     unsigned char   letter;
 
-    if (!(root = ft_init_header(size)))
+    if (!(root = ft_init_header(size, matrix_stk)))
         return (NULL);
     letter = 0;
     while (income)
