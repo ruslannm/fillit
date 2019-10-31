@@ -6,13 +6,13 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 15:29:30 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/30 18:25:05 by rgero            ###   ########.fr       */
+/*   Updated: 2019/10/31 18:42:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	ft_move_same_bit(t_link *row, t_list **stack_row, t_list **stack_top)
+static void	ft_move_same_bit(t_link *row, t_stack **stack_row, t_stack **stack_top)
 {
 	t_link  *row_to_stack;
 
@@ -27,7 +27,7 @@ static void	ft_move_same_bit(t_link *row, t_list **stack_row, t_list **stack_top
 	}
 }
 
-void		ft_move_same_bits(t_link *row, t_list **stack_row, t_list **stack_top)
+void		ft_move_same_bits(t_link *row, t_stack **stack_row, t_stack **stack_top)
 {
 	t_link  *tmp;
 
