@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 12:47:00 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/01 16:17:46 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/01 19:13:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void    ft_print_matrix(t_link *root)
     t_link  *line;
     t_link  *ptr;
 
+ //   return ;
     printf("Size = %d\nHeader\nLetter ", root->bit);
     line = root->right;
     while (line != root)
