@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 12:47:00 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/30 12:57:55 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/01 16:17:46 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "stdio.h"
 #include "fillit.h"
 
 void    ft_print_field(t_link *ptr, int size)
@@ -78,6 +78,7 @@ void    ft_print_matrix(t_link *root)
         printf(" %p\n", line);
         line = line->down;
     }
+    return ;
     ptr = root->down;
     while (ptr->root_top != ptr)
     {

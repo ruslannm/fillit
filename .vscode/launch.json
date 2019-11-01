@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/a.out",
 			"args": [
-				"${workspaceFolder}/test7_4v"
+				"${workspaceFolder}/test1_3v"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
