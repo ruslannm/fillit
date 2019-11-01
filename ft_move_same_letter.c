@@ -6,15 +6,15 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:02:19 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/31 18:43:11 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/01 15:03:23 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void    ft_move_same_letter(t_link *row, t_stack **stack)
+void	ft_move_same_letter(t_link *row, t_stack **stack)
 {
-	t_link  *row_to_stack;
+	t_link	*row_to_stack;
 
 	row_to_stack = row->down;
 	while (row_to_stack != row)
