@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 12:47:00 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/01 19:13:37 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/01 20:27:11 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ void    ft_print_matrix(t_link *root)
         if (line->bit < 10)
             printf("  %d", line->bit);
         else
-            printf(" %d", line->bit);
         line = line->right;
-    }
-    printf(" Pointer    \n");
     
     line = root->down;
     while (line->root_top != line)

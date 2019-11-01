@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/01 20:06:40 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/01 20:25:53 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,11 +195,11 @@ int	ft_dancing_links(t_link *root, t_link *row, t_stack **solution, int qnt)
 	else if (ret == -1 || check_s != qnt)
 	{
 		ft_undo_move(&stack_delete_row, &stack_delete_top, &(*solution));
+<<<<<<< HEAD
 		printf("After undo, ret=%d, check_s=%d=\n", ret, check_s);
 		ft_print_matrix(root);
+>>>>>>> c31739bc4ab4ec0aee5ddbe3725308f5a3de8b03
 		if (row->root_side->down == root)
-			return (-1);
-		return (ft_dancing_links(root, row->root_side->down, &(*solution),
 				qnt));
 	}
 	else if (check_s == qnt)

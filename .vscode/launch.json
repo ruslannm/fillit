@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/a.out",
 			"args": [
-				"${workspaceFolder}/test/test.txt"
+				"${workspaceFolder}/test7_4v"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
