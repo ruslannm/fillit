@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/01 20:26:37 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/02 14:26:53 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,9 @@ void	ft_put_solution(t_stack *solution, int square_len)
 	t_link	*link;
 	int		i;
 
-	ret = (char *)malloc(square_len * square_len + 1);
+	if (!(ret = (char *)malloc(square_len * square_len + 1)))
+		return ;
+	ft_memset(ret, '.', square_len * square_len + 1);
 	tmp = solution;
 	while (tmp)
 	{
@@ -149,7 +151,7 @@ int		ft_solution(t_list *income, int square_len, int qnt)
 	root = ft_fill_matrix(income, square_len, &matrix_stk);
 	ft_print_matrix(root);
 	solution = NULL;
-	ret = ft_dancing_links(root, ft_find_start_row(root), &solution, qnt);
+	ret = ft_dancing_links(root, ft_find_start_row(root, root), &solution, qnt);
 	if (-1 == ret)
 		ret = ft_solution(income, square_len + 1, qnt);
 	else
