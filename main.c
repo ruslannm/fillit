@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 13:04:06 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 13:37:29 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,16 @@ void	ft_lst_print(t_list *list)
 	}
 }
 
+char	*ft_strnew_char(size_t size, char c)
+{
+	char	*ret;
+
+	if (!(ret = (char *)malloc(size + 1)))
+		return (NULL);
+	ft_memset(ret, c, size + 1);
+	return (ret);
+}
+
 void	ft_put_solution(t_stack *solution, int square_len)
 {
 	char	*ret;
@@ -114,14 +124,12 @@ void	ft_put_solution(t_stack *solution, int square_len)
 	t_link	*link;
 	int		i;
 
-	if (!(ret = (char *)malloc(square_len * square_len + 1)))
+	if (!(ret = ft_strnew_char(square_len * square_len, '.')))
 		return ;
-	ft_memset(ret, '.', square_len * square_len + 1);
 	tmp = solution;
 	while (tmp)
 	{
-		link = tmp->link;
-		link = link->right;
+		link = (tmp->link)->right;
 		while (link != link->root_side)
 		{
 			if (link->letter < 27)

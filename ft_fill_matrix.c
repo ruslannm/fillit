@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/02 13:42:41 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 13:38:07 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ t_link  *ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk)
         }
         income = income->next;
     }
-//   if (!(ft_add_dummy(root, letter, matrix_stk)))
-//       return (NULL);
+   if (!(ft_add_dummy(root, letter, matrix_stk)))
+       return (NULL);
     return (root);
 }
