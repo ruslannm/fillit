@@ -6,7 +6,7 @@
 #    By: rgero <rgero@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 15:46:56 by rgero             #+#    #+#              #
-#    Updated: 2019/11/04 17:05:01 by rgero            ###   ########.fr        #
+#    Updated: 2019/11/04 18:04:38 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,17 +36,20 @@ LIB_NAME = libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ_NAME)
+$(NAME): $(LIB_NAME) $(OBJ_NAME)
 	$(CC) -o $(NAME)  $(OBJ_NAME) -L $(LIB_PATH) -lft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@  -c $<
 
 $(LIB_NAME):
-	make -C $(LIB_PATH) fclean && make -C $(LIB_PATH)
+	make -C $(LIB_PATH)
 
 clean:
 	/bin/rm -f $(OBJ)
+	make -C $(LIB_PATH) clean
 fclean: clean
 	/bin/rm -f $(NAME)
+	/bin/rm -f $(LIB_PATH)$(LIB_NAME)
+	
 re: fclean all
