@@ -6,31 +6,30 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 13:29:37 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 16:57:27 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_link	*ft_pop(t_stack **stack)
+t_link		*ft_pop(t_stack **stack)
 {
 	t_stack	*tmp;
-    t_link  *ret;
+	t_link	*ret;
 
-    if (*stack == NULL)
+	if (*stack == NULL)
 		return (NULL);
 	else
 	{
-	    tmp = *stack;
+		tmp = *stack;
 		ret = tmp->link;
 		*stack = (*stack)->next;
-        free(tmp);
-		//ft_lstdel(&tmp, &ft_del);
-        return (ret);
+		free(tmp);
+		return (ret);
 	}
 }
 
-void	ft_del_stack(t_stack *stack)
+void		ft_del_stack(t_stack *stack)
 {
 	while (stack)
 		ft_pop(&stack);
@@ -40,7 +39,7 @@ static void	ft_restore_dl(t_stack **stack, char type)
 {
 	t_link	*tmp;
 	t_link	*new;
-	
+
 	new = ft_pop(&(*stack));
 	if (type == 'r')
 	{
@@ -62,11 +61,12 @@ static void	ft_restore_dl(t_stack **stack, char type)
 	}
 }
 
-void    ft_undo_move(t_stack **stack_row, t_stack **stack_top, t_stack **solution)
+void		ft_undo_move(t_stack **stack_row, t_stack **stack_top,
+			t_stack **solution)
 {
 	ft_restore_dl(solution, 'r');
-	while (*stack_top)	
+	while (*stack_top)
 		ft_restore_dl(stack_top, 'c');
- 	while (*stack_row)
+	while (*stack_row)
 		ft_restore_dl(stack_row, 'r');
 }

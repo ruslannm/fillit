@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 13:29:19 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 17:01:58 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct		s_stack
 }					t_stack;
 
 char	*ft_move_tetra(char *s, int len);
+int		ft_check_tetra(char *s, t_list **income);
+char	*ft_strnew_char(size_t size, char c);
 int		ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution, int qnt);
 int 	ft_sqrt(int nb);
 void    ft_print_field(t_link *ptr, int size);

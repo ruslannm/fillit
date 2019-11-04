@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 12:47:00 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/04 15:09:21 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 16:43:39 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,16 @@ void    ft_print_matrix(t_link *root)
         printf("\n");
         ptr = ptr->down;
     }
+}
+
+void	ft_lst_print(t_list *list)
+{
+	t_list	*tmp;
+
+	tmp = list;
+	while (tmp)
+    {
+		printf("%s\n", (char *)tmp->content);
+	   	tmp = tmp->next;
+	}
 }
