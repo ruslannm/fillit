@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 15:36:00 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 16:33:18 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,14 @@ int ft_read(int fd, t_list **income)
 			if ((i + 1) % 5 == 4)
 				err = ft_check_tetra(tet, income);
 		}
-		else if  (ft_strlen(str) != 0)
+		else if (ft_strlen(str) != 0)
 			err = -1;
 		i++;
 		free(str);
 	}
-	return (err == -1 ? err : (i + 1) / 5);
+	if (0 == err)
+		err = (ft_strlen(tet) != 16 ? -1 : 1);
+	return (err == -1 || (i + 1) % 5 != 0 ? -1 : (i + 1) / 5);
 }
 
 void	ft_lst_print(t_list *list)
@@ -158,9 +160,10 @@ int		ft_solution(t_list *income, int square_len, int qnt)
 //	ft_print_matrix(root);
 	solution = NULL;
 	ret = ft_dancing_links(root, ft_row_for_seach(root), &solution, qnt);
-	if (!ret)
+	if (ret)
+		ft_put_solution(solution, square_len);
+	else
 		ret = ft_solution(income, square_len + 1, qnt);
-	ft_put_solution(solution, square_len);
 	ft_del_stack(solution);
 	return (ret);
 }
