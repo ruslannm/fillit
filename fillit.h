@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 12:49:53 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 13:02:49 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void    ft_move_same_letter(t_link *row, t_stack **stack);
 void	ft_move_same_bits(t_link *row, t_stack **stack_row, t_stack **stack_top);
 int		ft_push(t_stack **stack, t_link *link);
 t_link	*ft_pop(t_stack **stack);
+void	*ft_del_stack(t_stack *stack);
 t_stack	*ft_row_for_seach(t_link *root);
 
 #endif

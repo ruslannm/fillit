@@ -6,20 +6,11 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 12:53:41 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 13:04:23 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-/*
-static void	ft_del(void *content, size_t len)
-{
-	//ft_bzero(content, len);
-	if (len > 0)
-		free(content);
-}
-*/
 
 t_link	*ft_pop(t_stack **stack)
 {
@@ -37,6 +28,12 @@ t_link	*ft_pop(t_stack **stack)
 		//ft_lstdel(&tmp, &ft_del);
         return (ret);
 	}
+}
+
+void	*ft_del_stack(t_stack *stack)
+{
+	while (stack)
+		ft_pop(t_stack &stack);
 }
 
 static void	ft_restore_dl(t_stack **stack, char type)

@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 12:48:47 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 13:04:06 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,7 @@ void	ft_put_solution(t_stack *solution, int square_len)
 		link = link->right;
 		while (link != link->root_side)
 		{
-			if (link->letter > 26)
-				ret[link->bit] = 46;
-			else
+			if (link->letter < 27)
 				ret[link->bit] = link->letter + 64;
 			link = link->right;
 		}
@@ -155,6 +153,7 @@ int		ft_solution(t_list *income, int square_len, int qnt)
 	if (!ret)
 		ret = ft_solution(income, square_len + 1, qnt);
 	ft_put_solution(solution, square_len);
+	ft_del_stack(solution);
 	return (ret);
 }
 
