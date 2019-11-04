@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 14:33:43 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 15:35:11 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ int	ft_count_row(t_link *top)
 t_stack	*ft_row_for_seach(t_link *root)
 {
 	t_link	*tmp;
+	t_stack	*ret;
+
+	ret = NULL;
+	tmp = root->up;
+	while (tmp != root)
+	{
+		if (!ft_push(&ret, tmp->root_side))
+		{
+			//TODO clean stack ret
+			return (NULL); //TODO 
+		}
+		tmp = tmp->up;
+	}
+	return (ret);
+}
+
+/*
+t_stack	*ft_row_for_seach(t_link *root)
+{
+	t_link	*tmp;
 	t_link	*column;
 	t_stack	*ret;
 
@@ -55,6 +75,7 @@ t_stack	*ft_row_for_seach(t_link *root)
 	}
 	return (ret);
 }
+*/
 
 /*
 t_stack	*ft_row_for_seach(t_link *root)
@@ -97,7 +118,7 @@ t_stack	*ft_row_for_seach(t_link *root)
 ** 0 - there are column (go ahead)
 ** -1 - there are empty column (go back, undo deletion)
 */
-
+/*
 int	ft_check_column(t_link *root)
 {
 	t_link	*tmp;
@@ -115,7 +136,7 @@ int	ft_check_column(t_link *root)
 	}
 	return (ret);
 }
-
+*/
 int	ft_check_solution(t_stack *solution, int qnt)
 {
 	t_stack	*tmp;
@@ -176,6 +197,8 @@ int	ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution, int q
 	stack_delete_row = NULL;
 	stack_delete_top = NULL;
 	row = ft_pop(&stack_row);
+//	ft_print_matrix(root);
+//	printf("letter=%i, row=%p\n", row->letter, row);
 	while (row)
 	{
 		ft_move_same_letter(row, &stack_delete_row);
@@ -185,14 +208,13 @@ int	ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution, int q
 		check_s = ft_check_solution(*solution, qnt);
 		if (check_s == qnt)
 			return (1);
-		else if (check_s + check_r != qnt)
-			ft_undo_move(&stack_delete_row, &stack_delete_top, &(*solution));
 		else if (check_s + check_r == qnt)
 		{
 			if ((ft_dancing_links(root, ft_row_for_seach(root), &(*solution), qnt)) == 1)
 				return (1);
-			ft_undo_move(&stack_delete_row, &stack_delete_top, &(*solution));
 		}
+		ft_undo_move(&stack_delete_row, &stack_delete_top, &(*solution));
+//		ft_print_matrix(root);
 		row = ft_pop(&stack_row);
 	}
 	return (0);

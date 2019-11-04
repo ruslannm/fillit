@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 13:37:29 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 15:36:00 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ int		ft_solution(t_list *income, int square_len, int qnt)
 
 	matrix_stk = NULL;
 	root = ft_fill_matrix(income, square_len, &matrix_stk);
-	ft_print_matrix(root);
+//	ft_print_matrix(root);
 	solution = NULL;
 	ret = ft_dancing_links(root, ft_row_for_seach(root), &solution, qnt);
 	if (!ret)
@@ -183,8 +183,8 @@ int main(int argc, char **argv)
 		else
 		{
 			square_len = ft_square_len(qnt * 4);
-			printf("qnt tetra=%d, square len =%d \n", qnt, square_len);
-			ft_lst_print(income);
+//			printf("qnt tetra=%d, square len =%d \n", qnt, square_len);
+//			ft_lst_print(income);
 			ft_solution(income, square_len, qnt);
 		}
 		close(fd);
