@@ -3,21 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 17:06:02 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/05 17:58:20 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+static int	ft_square_len(int nb, t_list *income)
+{
+	t_list	*ptr;
+	int		ret;
+	
+	while (!(ret = ft_sqrt(nb)))
+		nb++;
+	while (income)
+	{
+		ptr = (char *)income->content;
+		
+		
+		i = 0;
+		while (i < 16)
+		{
+
+			i++;
+		}
+		income = income->next;
+	}
+	return (ft_sqrt(nb));
+}
+
+/*
 static int	ft_square_len(int nb)
 {
 	while (0 == ft_sqrt(nb))
 		nb++;
 	return (ft_sqrt(nb));
 }
+*/
 
 int			ft_read(int fd, t_list **income)
 {
@@ -112,7 +137,7 @@ int			main(int argc, char **argv)
 			ft_putstr("error\n");
 		else
 		{
-			square_len = ft_square_len(qnt * 4);
+			square_len = ft_square_len(qnt * 4, income);
 			ft_solution(income, square_len, qnt);
 		}
 		close(fd);
