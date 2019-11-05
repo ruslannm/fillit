@@ -82,12 +82,8 @@ void    ft_print_matrix(t_link *root)
         printf(" %p\n", line);
         line = line->down;
     }
-<<<<<<< HEAD
-/*    ptr = root->down;
-=======
     return ;
     ptr = root->down;
->>>>>>> 98a4ccb48c5451fc4410aa168abcc20d30f1c3c6
     while (ptr->root_top != ptr)
     {
         printf("%d-%d\t", ptr->letter, ptr->bit);
@@ -97,10 +93,6 @@ void    ft_print_matrix(t_link *root)
         printf("%d-%d\t", ptr->right->right->right->right->letter, ptr->right->right->right->right->bit);
         printf("\n");
         ptr = ptr->down;
-<<<<<<< HEAD
-    }*/
-}
-=======
     }
 }
 
@@ -115,4 +107,3 @@ void	ft_lst_print(t_list *list)
 	   	tmp = tmp->next;
 	}
 }
->>>>>>> 98a4ccb48c5451fc4410aa168abcc20d30f1c3c6
