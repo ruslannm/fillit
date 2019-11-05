@@ -6,11 +6,11 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:46:14 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/20 16:47:12 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/04 17:45:48 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_sqrt(int nb)
+int	ft_sqrt(int nb)
 {
 	int ret;
 	int sqrt;

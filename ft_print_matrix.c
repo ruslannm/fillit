@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 12:47:00 by fprovolo          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/11/01 15:49:39 by fprovolo         ###   ########.fr       */
+=======
+/*   Updated: 2019/11/04 16:43:39 by rgero            ###   ########.fr       */
+>>>>>>> 98a4ccb48c5451fc4410aa168abcc20d30f1c3c6
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "stdio.h"
 #include "fillit.h"
 
 void    ft_print_field(t_link *ptr, int size)
@@ -46,6 +50,7 @@ void    ft_print_matrix(t_link *root)
     t_link  *line;
     t_link  *ptr;
 
+   // return ;
     printf("Size = %d\nHeader\nLetter ", root->bit);
     line = root->right;
     while (line != root)
@@ -57,7 +62,6 @@ void    ft_print_matrix(t_link *root)
         line = line->right;
     }
     printf(" Pointer    \n");
-    
     line = root->down;
     while (line->root_top != line)
     {
@@ -78,7 +82,12 @@ void    ft_print_matrix(t_link *root)
         printf(" %p\n", line);
         line = line->down;
     }
+<<<<<<< HEAD
 /*    ptr = root->down;
+=======
+    return ;
+    ptr = root->down;
+>>>>>>> 98a4ccb48c5451fc4410aa168abcc20d30f1c3c6
     while (ptr->root_top != ptr)
     {
         printf("%d-%d\t", ptr->letter, ptr->bit);
@@ -88,5 +97,22 @@ void    ft_print_matrix(t_link *root)
         printf("%d-%d\t", ptr->right->right->right->right->letter, ptr->right->right->right->right->bit);
         printf("\n");
         ptr = ptr->down;
+<<<<<<< HEAD
     }*/
 }
+=======
+    }
+}
+
+void	ft_lst_print(t_list *list)
+{
+	t_list	*tmp;
+
+	tmp = list;
+	while (tmp)
+    {
+		printf("%s\n", (char *)tmp->content);
+	   	tmp = tmp->next;
+	}
+}
+>>>>>>> 98a4ccb48c5451fc4410aa168abcc20d30f1c3c6

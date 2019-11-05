@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_matrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/11/01 18:05:43 by fprovolo         ###   ########.fr       */
+=======
+/*   Updated: 2019/11/04 14:19:21 by rgero            ###   ########.fr       */
+>>>>>>> 98a4ccb48c5451fc4410aa168abcc20d30f1c3c6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +130,14 @@ t_link  *ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk)
         }
         income = income->next;
     }
+<<<<<<< HEAD
 /*    if (!(ft_add_dummy(root, letter, matrix_stk)))
         return (NULL);*/
+=======
+  /*
+   if (!(ft_add_dummy(root, letter, matrix_stk)))
+       return (NULL);
+       */
+>>>>>>> 98a4ccb48c5451fc4410aa168abcc20d30f1c3c6
     return (root);
 }

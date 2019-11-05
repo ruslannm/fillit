@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/11/01 15:58:03 by fprovolo         ###   ########.fr       */
+=======
+/*   Updated: 2019/11/04 17:01:58 by rgero            ###   ########.fr       */
+>>>>>>> 98a4ccb48c5451fc4410aa168abcc20d30f1c3c6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +40,9 @@ typedef struct		s_stack
 }					t_stack;
 
 char	*ft_move_tetra(char *s, int len);
-int		ft_dancing_links(t_link *root, t_link *row, t_stack **solution, int qnt);
+int		ft_check_tetra(char *s, t_list **income);
+char	*ft_strnew_char(size_t size, char c);
+int		ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution, int qnt);
 int 	ft_sqrt(int nb);
 void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
@@ -54,5 +60,8 @@ void    ft_undo_move(t_stack **stack_row, t_stack **stack_top, t_stack **solutio
 void    ft_move_same_letter(t_link *row, t_stack **stack);
 void	ft_move_same_bits(t_link *row, t_stack **stack_row, t_stack **stack_top);
 int		ft_push(t_stack **stack, t_link *link);
+t_link	*ft_pop(t_stack **stack);
+void	ft_del_stack(t_stack *stack);
+t_stack	*ft_row_for_seach(t_link *root);
 
 #endif

@@ -8,9 +8,9 @@
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/a.out",
+			"program": "${workspaceFolder}/fillit",
 			"args": [
-				"${workspaceFolder}/test7_4v"
+				"${workspaceFolder}/test/valid_19"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
