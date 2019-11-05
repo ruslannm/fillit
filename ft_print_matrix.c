@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 12:47:00 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/10/30 12:57:55 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/01 15:49:39 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void    ft_print_matrix(t_link *root)
         printf(" %p\n", line);
         line = line->down;
     }
-    ptr = root->down;
+/*    ptr = root->down;
     while (ptr->root_top != ptr)
     {
         printf("%d-%d\t", ptr->letter, ptr->bit);
@@ -88,5 +88,5 @@ void    ft_print_matrix(t_link *root)
         printf("%d-%d\t", ptr->right->right->right->right->letter, ptr->right->right->right->right->bit);
         printf("\n");
         ptr = ptr->down;
-    }
+    }*/
 }

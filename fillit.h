@@ -6,13 +6,14 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/31 18:32:42 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/01 15:58:03 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
+#include <stdio.h>
 #include "libft/get_next_line.h"
 #include "libft/libft.h"
 
