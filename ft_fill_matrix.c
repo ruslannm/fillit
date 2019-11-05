@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_matrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/11/05 17:09:07 by fprovolo         ###   ########.fr       */
+=======
+/*   Updated: 2019/11/05 18:48:38 by rgero            ###   ########.fr       */
+>>>>>>> ec82fd22dc092a0b576d647d4ce855c0169a51e6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +89,12 @@ t_link  *ft_init_header(int size, t_stack **matrix_stk)
 	t_link          *ptr;
 	unsigned char   i;
 	
+<<<<<<< HEAD
 	if ((!(root = ft_create_blank_line(size * size + 1, matrix_stk))) ||
 			 size > 15)
+=======
+	if ((!(root = ft_create_blank_line(size * size + 1, matrix_stk))) || size > 15)
+>>>>>>> ec82fd22dc092a0b576d647d4ce855c0169a51e6
 		return (NULL);
 	ptr = root;
 	i = 0;
@@ -106,7 +114,7 @@ t_link  *ft_init_header(int size, t_stack **matrix_stk)
 	return (root);
 }
 
-t_link  *ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk)
+t_link  *ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk, char dummy)
 {
 	int             pt;
 	t_link          *root;
@@ -122,12 +130,24 @@ t_link  *ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk)
 		while (pt < size * size)
 		{
 			if (ft_check_fit((char *)income->content, pt, size))
+<<<<<<< HEAD
 				if (!(ft_add_tetra(root, (char *)income->content, pt, letter,
 						 matrix_stk)))
+=======
+				if (!(ft_add_tetra(root, (char *)income->content, pt, letter, matrix_stk)))
+>>>>>>> ec82fd22dc092a0b576d647d4ce855c0169a51e6
 					return (NULL);
 			pt++;
 		}
 		income = income->next;
 	}
+<<<<<<< HEAD
+=======
+	if (dummy == 'y')
+	{
+		if (!(ft_add_dummy(root, letter, matrix_stk)))
+			return (NULL);
+	}
+>>>>>>> ec82fd22dc092a0b576d647d4ce855c0169a51e6
 	return (root);
 }

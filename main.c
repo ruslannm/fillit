@@ -6,7 +6,11 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/11/05 17:58:20 by fprovolo         ###   ########.fr       */
+=======
+/*   Updated: 2019/11/05 18:33:50 by rgero            ###   ########.fr       */
+>>>>>>> ec82fd22dc092a0b576d647d4ce855c0169a51e6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +113,24 @@ int			ft_solution(t_list *income, int square_len, int qnt)
 	t_stack	*matrix_stk;
 
 	matrix_stk = NULL;
-	root = ft_fill_matrix(income, square_len, &matrix_stk);
+	//square_len = 7;
+	root = ft_fill_matrix(income, square_len, &matrix_stk, 'y');
 	solution = NULL;
-	ret = ft_dancing_links(root, ft_row_for_seach(root), &solution, qnt);
+//	ft_print_matrix(root);
+	ft_putstr("fast start\n");
+	ret = ft_dancing_links_fast(root, ft_row_for_seach_fast(root), &solution, qnt, 0);
+	ft_del_stack(solution);
+	solution = NULL;
+	ft_putstr("fast end\n");
 	if (ret)
+	{
+		root = ft_fill_matrix(income, square_len, &matrix_stk, 'n');
+//		ft_print_matrix(root);
+		ft_putstr("right start\n");
+		ret = ft_dancing_links(root, ft_row_for_seach(root), &solution, qnt, 0);
+		ft_putstr("right end\n");
 		ft_put_solution(solution, square_len);
+	}
 	else
 		ret = ft_solution(income, square_len + 1, qnt);
 	ft_del_stack(solution);
