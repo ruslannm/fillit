@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 17:01:58 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/05 18:01:25 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,16 @@ typedef struct		s_stack
 char	*ft_move_tetra(char *s, int len);
 int		ft_check_tetra(char *s, t_list **income);
 char	*ft_strnew_char(size_t size, char c);
-int		ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution, int qnt);
+int		ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution, int qnt, int deep);
+int		ft_dancing_links_fast(t_link *root, t_stack *stack_row, t_stack **solution,
+		int qnt, int deep);
 int 	ft_sqrt(int nb);
 void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
 t_link	*ft_create_blank_line(int len, t_stack **matrix_stk);
 void	ft_free_line(t_link *line);
 void	ft_free_matrix(t_link *root);
-t_link	*ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk);
+t_link	*ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk, char dummy);
 t_link	*ft_init_header(int size, t_stack **matrix_stk);
 void	ft_add_to_matrix(t_link *root, t_link *line);
 t_link  *ft_add_tetra(t_link *root, char *tet, int pt, unsigned char letter, t_stack **matrix_stk);
@@ -58,5 +60,6 @@ int		ft_push(t_stack **stack, t_link *link);
 t_link	*ft_pop(t_stack **stack);
 void	ft_del_stack(t_stack *stack);
 t_stack	*ft_row_for_seach(t_link *root);
+t_stack	*ft_row_for_seach_fast(t_link *root);
 
 #endif
