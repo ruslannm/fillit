@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 18:47:05 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 20:25:21 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,16 @@ int			main(int argc, char **argv)
 	t_list	*income;
 
 	if (argc != 2)
+	{
+		ft_putstr("usage: ./fillit tetriminos_file\n");
 		return (0);
+	}
 	fd = open(argv[1], O_RDONLY);
 	income = NULL;
 	if (fd > 0)
 	{
 		qnt = ft_read(fd, &income, NULL);
-		if (qnt < 0)
+		if (qnt < 0 || qnt > 26)
 			ft_putstr("error\n");
 		else
 		{
