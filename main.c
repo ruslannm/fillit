@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 16:29:02 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 17:38:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			ft_read(int fd, t_list **income)
 
 	i = 0;
 	err = 0;
+	str = NULL;
 	while (get_next_line(fd, &str) == 1 && err == 0)
 	{
 		if (i % 5 != 4)
@@ -53,6 +54,7 @@ int			ft_read(int fd, t_list **income)
 		i++;
 		free(str);
 	}
+	free(str);
 	return (err == -1 || (i + 1) % 5 != 0 ? -1 : (i + 1) / 5);
 }
 

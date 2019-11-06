@@ -6,24 +6,22 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:28:21 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 15:26:22 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 17:36:50 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_del_stack_return_one(t_stack *stack)
+int	ft_del_stack_return(t_stack *stack, t_stack *stack_delete_row,
+	t_stack *stack_delete_top, int ret)
 {
 	while (stack)
 		ft_pop(&stack);
-	return (1);
-}
-
-int	ft_del_stack_return_zero(t_stack *stack)
-{
-	while (stack)
-		ft_pop(&stack);
-	return (0);
+	while (stack_delete_row)
+		ft_pop(&stack_delete_row);
+	while (stack_delete_top)
+		ft_pop(&stack_delete_top);
+	return (ret);
 }
 
 int	ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution,
@@ -44,16 +42,16 @@ int	ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution,
 		check[0] = ft_check_root(root, qnt);
 		check[1] = ft_check_solution(*solution, qnt);
 		if (check[1] == qnt)
-			return (ft_del_stack_return_one(stack_row));
+			return (ft_del_stack_return(stack_row, stack_delete_row, stack_delete_top, 1));
 		else if (check[0] + check[1] == qnt)
 		{
 			if ((ft_dancing_links(root, ft_row_for_seach(root), &(*solution),
 				qnt)) == 1)
-				return (ft_del_stack_return_one(stack_row));
+				return (ft_del_stack_return(stack_row, stack_delete_row, stack_delete_top, 1));
 		}
 		ft_undo_move(&stack_delete_row, &stack_delete_top, &(*solution));
 	}
-	return (ft_del_stack_return_zero(stack_row));
+	return (ft_del_stack_return(stack_row, stack_delete_row, stack_delete_top, 0));
 }
 
 int	ft_dancing_links_fast(t_link *root, t_stack *stack_row, t_stack **solution,
@@ -74,14 +72,14 @@ int	ft_dancing_links_fast(t_link *root, t_stack *stack_row, t_stack **solution,
 		check[0] = ft_check_root(root, qnt);
 		check[1] = ft_check_solution(*solution, qnt);
 		if (check[1] == qnt)
-			return (ft_del_stack_return_one(stack_row));
+			return (ft_del_stack_return(stack_row, stack_delete_row, stack_delete_top, 1));
 		else if (check[0] + check[1] == qnt)
 		{
 			if ((ft_dancing_links_fast(root, ft_row_for_seach_fast(root),
 				&(*solution), qnt)) == 1)
-				return (ft_del_stack_return_one(stack_row));
+				return (ft_del_stack_return(stack_row, stack_delete_row, stack_delete_top, 1));
 		}
 		ft_undo_move(&stack_delete_row, &stack_delete_top, &(*solution));
 	}
-	return (ft_del_stack_return_zero(stack_row));
+	return (ft_del_stack_return(stack_row, stack_delete_row, stack_delete_top, 0));
 }
