@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 12:32:52 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/06 15:02:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ typedef struct		s_stack
 char	*ft_move_tetra(char *s, int len);
 int		ft_check_tetra(char *s, t_list **income);
 char	*ft_strnew_char(size_t size, char c);
-int		ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution, int qnt, int deep);
+int		ft_dancing_links(t_link *root, t_stack *stack_row, t_stack **solution, int qnt);
 int		ft_dancing_links_fast(t_link *root, t_stack *stack_row, t_stack **solution,
-		int qnt, int deep);
+		int qnt);
 int 	ft_sqrt(int nb);
 void    ft_print_field(t_link *ptr, int size);
 int     ft_check_fit(char *tet, int pt, int size);
@@ -63,5 +63,8 @@ void	ft_del_stack(t_stack *stack);
 t_stack	*ft_row_for_seach(t_link *root);
 t_stack	*ft_row_for_seach_fast(t_link *root);
 int     ft_size_tetra(char *tetra);
+int		ft_check_solution(t_stack *solution, int qnt);
+int		ft_check_root(t_link *root, int qnt);
+int		ft_count_row(t_link *top);
 
 #endif
