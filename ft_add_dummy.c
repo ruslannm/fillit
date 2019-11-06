@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_dummy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 14:28:05 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/06 13:14:52 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:49:07 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_link	*ft_add_dummy(t_link *root, unsigned char letter, t_stack **matrix_stk)
 	unsigned char	len;
 	t_link			*new;
 
+	new = NULL;
 	pt = 0;
 	len = root->bit * root->bit;
 	while (pt < len && letter * 4 < len)
