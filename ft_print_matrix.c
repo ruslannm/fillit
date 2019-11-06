@@ -6,18 +6,18 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 12:47:00 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/05 16:26:15 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/06 13:31:44 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stdio.h"
 #include "fillit.h"
 
-void    ft_print_field(t_link *ptr, int size)
+void	ft_print_field(t_link *ptr, int size)
 {
-	int     pt;
-	int     i;
-	char    c;
+	int		pt;
+	int		i;
+	char	c;
 
 	pt = 0;
 	ptr = ptr->right;
@@ -40,13 +40,13 @@ void    ft_print_field(t_link *ptr, int size)
 	printf("\n");
 }
 
-void    ft_print_matrix(t_link *root)
+void	ft_print_matrix(t_link *root)
 {
-	t_link  *column;
-	t_link  *line;
-	t_link  *ptr;
+	t_link	*column;
+	t_link	*line;
+	t_link	*ptr;
 
-   // return ;
+	// return ;
 	printf("Size = %d\nHeader\nLetter ", root->bit);
 	line = root->right;
 	while (line != root)
@@ -85,8 +85,10 @@ void    ft_print_matrix(t_link *root)
 		printf("%d-%d\t", ptr->letter, ptr->bit);
 		printf("%d-%d\t", ptr->right->letter, ptr->right->bit);
 		printf("%d-%d\t", ptr->right->right->letter, ptr->right->right->bit);
-		printf("%d-%d\t", ptr->right->right->right->letter, ptr->right->right->right->bit);
-		printf("%d-%d\t", ptr->right->right->right->right->letter, ptr->right->right->right->right->bit);
+		printf("%d-%d\t", ptr->right->right->right->letter,
+							ptr->right->right->right->bit);
+		printf("%d-%d\t", ptr->right->right->right->right->letter,
+							ptr->right->right->right->right->bit);
 		printf("\n");
 		ptr = ptr->down;
 	}
@@ -100,6 +102,6 @@ void	ft_lst_print(t_list *list)
 	while (tmp)
 	{
 		printf("%s\n", (char *)tmp->content);
-	   	tmp = tmp->next;
+		tmp = tmp->next;
 	}
 }

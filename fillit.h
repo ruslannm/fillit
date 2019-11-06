@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/05 18:48:14 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 12:32:52 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ t_link	*ft_pop(t_stack **stack);
 void	ft_del_stack(t_stack *stack);
 t_stack	*ft_row_for_seach(t_link *root);
 t_stack	*ft_row_for_seach_fast(t_link *root);
+int     ft_size_tetra(char *tetra);
 
 #endif

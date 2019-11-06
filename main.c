@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/05 19:09:32 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/06 13:24:06 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,19 @@
 
 static int	ft_square_len(int nb, t_list *income)
 {
-	t_list	*ptr;
 	int		ret;
-	
+
 	while (!(ret = ft_sqrt(nb)))
 		nb++;
-	while (income)
-	{
-		ptr = (char *)income->content;
-		
-		
-		i = 0;
-		while (i < 16)
+	if (ret < 4)
+		while (income)
 		{
-
-			i++;
+			if (ft_size_tetra((char *)income->content) > ret)
+				ret = ft_size_tetra((char *)income->content);
+			income = income->next;
 		}
-		income = income->next;
-	}
-	return (ft_sqrt(nb));
+	return (ret);
 }
-
-/*
-static int	ft_square_len(int nb)
-{
-	while (0 == ft_sqrt(nb))
-		nb++;
-	return (ft_sqrt(nb));
-}
-*/
 
 int			ft_read(int fd, t_list **income)
 {
@@ -151,6 +135,7 @@ int			main(int argc, char **argv)
 		else
 		{
 			square_len = ft_square_len(qnt * 4, income);
+			printf("Square = %d\n", square_len);
 			ft_solution(income, square_len, qnt);
 		}
 		close(fd);

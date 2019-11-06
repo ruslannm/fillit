@@ -6,17 +6,17 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:55:51 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/05 16:25:42 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/06 13:17:08 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_link  *ft_create_blank_line(int len, t_stack **matrix_stk)
+t_link	*ft_create_blank_line(int len, t_stack **matrix_stk)
 {
-	int     i;
-	t_link  *ptr;
-	t_link  *next;
+	int		i;
+	t_link	*ptr;
+	t_link	*next;
 
 	if (!(ptr = (t_link *)malloc(sizeof(t_link))))
 		return (NULL);
@@ -40,9 +40,9 @@ t_link  *ft_create_blank_line(int len, t_stack **matrix_stk)
 	return (ptr);
 }
 
-void    ft_free_line(t_link *line)
+void	ft_free_line(t_link *line)
 {
-	t_link  *del;
+	t_link	*del;
 
 	line = line->right;
 	while (line != line->root_side)
@@ -55,12 +55,12 @@ void    ft_free_line(t_link *line)
 	return ;
 }
 
-void    ft_free_matrix(t_link *ptr)
+void	ft_free_matrix(t_link *ptr)
 {
-	t_link  *del;
+	t_link	*del;
 
 	ptr = ptr->down;
-	while(ptr != ptr->root_top)
+	while (ptr != ptr->root_top)
 	{
 		del = ptr;
 		ptr = ptr->down;

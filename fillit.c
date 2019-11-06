@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:01:00 by rgero             #+#    #+#             */
-/*   Updated: 2019/10/15 19:32:07 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 13:29:25 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	argc = 0;
 	printf("program = %s\n", argv[0]);
-	return (0); 
+	return (0);
 }
