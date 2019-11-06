@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 17:38:33 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 17:53:58 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,14 @@ static int	ft_square_len(int nb, t_list *income)
 	return (ret);
 }
 
-int			ft_read(int fd, t_list **income)
+int			ft_read(int fd, t_list **income, char *str)
 {
 	int		i;
-	char	*str;
 	char	tet[17];
 	int		err;
 
 	i = 0;
 	err = 0;
-	str = NULL;
 	while (get_next_line(fd, &str) == 1 && err == 0)
 	{
 		if (i % 5 != 4)
@@ -85,6 +83,7 @@ void		ft_put_solution(t_stack *solution, int square_len)
 		write(1, &ret[(i++) * square_len], square_len);
 		write(1, "\n", 1);
 	}
+	free(ret);
 }
 
 int			ft_solution(t_list *income, int square_len, int qnt)
@@ -116,6 +115,13 @@ int			ft_solution(t_list *income, int square_len, int qnt)
 	return (ret);
 }
 
+
+static void	ft_del(void *content, size_t len)
+{
+	ft_bzero(content, len);
+	free(content);
+}
+
 int			main(int argc, char **argv)
 {
 	int		fd;
@@ -129,13 +135,14 @@ int			main(int argc, char **argv)
 	income = NULL;
 	if (fd > 0)
 	{
-		qnt = ft_read(fd, &income);
+		qnt = ft_read(fd, &income, NULL);
 		if (qnt < 0)
 			ft_putstr("error\n");
 		else
 		{
 			square_len = ft_square_len(qnt * 4, income);
 			ft_solution(income, square_len, qnt);
+			ft_lstdel(&income, &ft_del);
 		}
 		close(fd);
 	}
