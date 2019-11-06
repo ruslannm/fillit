@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 13:24:06 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:57:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ static int	ft_square_len(int nb, t_list *income)
 	return (ret);
 }
 
-int			ft_read(int fd, t_list **income)
+int			ft_read(int fd, t_list **income, char *str)
 {
 	int		i;
-	char	*str;
 	char	tet[17];
 	int		err;
 
@@ -53,6 +52,7 @@ int			ft_read(int fd, t_list **income)
 		i++;
 		free(str);
 	}
+	free(str);
 	return (err == -1 || (i + 1) % 5 != 0 ? -1 : (i + 1) / 5);
 }
 
@@ -83,6 +83,7 @@ void		ft_put_solution(t_stack *solution, int square_len)
 		write(1, &ret[(i++) * square_len], square_len);
 		write(1, "\n", 1);
 	}
+	free(ret);
 }
 
 int			ft_solution(t_list *income, int square_len, int qnt)
@@ -93,27 +94,24 @@ int			ft_solution(t_list *income, int square_len, int qnt)
 	t_stack	*matrix_stk;
 
 	matrix_stk = NULL;
-	//square_len = 7;
+	solution = NULL;
 	root = ft_fill_matrix(income, square_len, &matrix_stk, 'y');
-	solution = NULL;
-//	ft_print_matrix(root);
-	ft_putstr("fast start\n");
-	ret = ft_dancing_links_fast(root, ft_row_for_seach_fast(root), &solution, qnt, 0);
+	ret = ft_dancing_links_fast(root, ft_row_for_seach_fast(root), &solution,
+								qnt);
 	ft_del_stack(solution);
+	ft_del_root(matrix_stk);
+	matrix_stk = NULL;
 	solution = NULL;
-	ft_putstr("fast end\n");
 	if (ret)
 	{
 		root = ft_fill_matrix(income, square_len, &matrix_stk, 'n');
-//		ft_print_matrix(root);
-		ft_putstr("right start\n");
-		ret = ft_dancing_links(root, ft_row_for_seach(root), &solution, qnt, 0);
-		ft_putstr("right end\n");
+		ret = ft_dancing_links(root, ft_row_for_seach(root), &solution, qnt);
 		ft_put_solution(solution, square_len);
 	}
 	else
 		ret = ft_solution(income, square_len + 1, qnt);
 	ft_del_stack(solution);
+	ft_del_root(matrix_stk);
 	return (ret);
 }
 
@@ -127,16 +125,17 @@ int			main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	fd = open(argv[1], O_RDONLY);
+	income = NULL;
 	if (fd > 0)
 	{
-		qnt = ft_read(fd, &income);
+		qnt = ft_read(fd, &income, NULL);
 		if (qnt < 0)
 			ft_putstr("error\n");
 		else
 		{
 			square_len = ft_square_len(qnt * 4, income);
-			printf("Square = %d\n", square_len);
 			ft_solution(income, square_len, qnt);
+			ft_lstdel(&income, &ft_del);
 		}
 		close(fd);
 	}

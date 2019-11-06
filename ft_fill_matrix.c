@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/06 18:04:22 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:19:36 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ t_link	*ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk,
 		income = income->next;
 	}
 	if (dummy == 'y')
-		if (!(ft_add_dummy(root, matrix_stk)))
+		if (-1 == ft_add_dummy(root, matrix_stk))
 			return (NULL);
 	return (root);
 }

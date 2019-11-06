@@ -7,3 +7,6 @@ main.o
 fillit.dSYM/Contents/Info.plist
 fillit.dSYM/Contents/Resources/DWARF/fillit
 libft/libft.a
+res_valgrind
+fillit
+res*
