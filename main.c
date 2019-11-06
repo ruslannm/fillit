@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 18:03:45 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 18:47:05 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,23 +93,23 @@ int			ft_solution(t_list *income, int square_len, int qnt)
 
 	matrix_stk = NULL;
 	solution = NULL;
-	root = ft_fill_matrix(income, square_len, &matrix_stk, 'y');
-	ret = ft_dancing_links_fast(root, ft_row_for_seach_fast(root), &solution,
-								qnt);
-	ft_del_stack(solution);
-	ft_del_root(matrix_stk);
+	ret = -1;
+	if ((root = ft_fill_matrix(income, square_len, &matrix_stk, 'y')))
+		ret = ft_dancing_links_fast(root, ft_row_for_seach_fast(root),
+									&solution, qnt);
+	ft_del_root(solution, matrix_stk);
 	matrix_stk = NULL;
 	solution = NULL;
 	if (ret)
 	{
-		root = ft_fill_matrix(income, square_len, &matrix_stk, 'n');
-		ret = ft_dancing_links(root, ft_row_for_seach(root), &solution, qnt);
+		if ((root = ft_fill_matrix(income, square_len, &matrix_stk, 'n')))
+			ret = ft_dancing_links(root, ft_row_for_seach(root), &solution,
+									qnt);
 		ft_put_solution(solution, square_len);
 	}
-	else
+	else if (!ret)
 		ret = ft_solution(income, square_len + 1, qnt);
-	ft_del_stack(solution);
-	ft_del_root(matrix_stk);
+	ft_del_root(solution, matrix_stk);
 	return (ret);
 }
 
