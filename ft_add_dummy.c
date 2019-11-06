@@ -6,18 +6,21 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 14:28:05 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/06 16:49:07 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 17:15:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_link	*ft_add_dummy(t_link *root, unsigned char letter, t_stack **matrix_stk)
+int	ft_add_dummy(t_link *root, unsigned char letter, t_stack **matrix_stk,
+	char dummy)
 {
 	unsigned char	pt;
 	unsigned char	len;
 	t_link			*new;
 
+	if (dummy == 'n')
+		return (0);
 	new = NULL;
 	pt = 0;
 	len = root->bit * root->bit;
@@ -26,7 +29,7 @@ t_link	*ft_add_dummy(t_link *root, unsigned char letter, t_stack **matrix_stk)
 		if (!(new = ft_create_blank_line(2, matrix_stk)))
 		{
 			ft_free_matrix(root);
-			return (NULL);
+			return (-1);
 		}
 		new->letter = 27 + pt;
 		new->bit = 99;
@@ -35,5 +38,5 @@ t_link	*ft_add_dummy(t_link *root, unsigned char letter, t_stack **matrix_stk)
 		ft_add_to_matrix(root, new);
 		pt++;
 	}
-	return (new);
+	return (0);
 }

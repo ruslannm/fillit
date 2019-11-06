@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:08:23 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/06 16:47:52 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 17:14:50 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ t_link	*ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk,
 	int				pt;
 	t_link			*root;
 	unsigned char	letter;
-	t_link			*tmp;
 
 	if (!(root = ft_init_header(size, matrix_stk)))
 		return (NULL);
@@ -130,10 +129,7 @@ t_link	*ft_fill_matrix(t_list *income, int size, t_stack **matrix_stk,
 		}
 		income = income->next;
 	}
-	if (dummy == 'y')
-	{
-		if (!(tmp = ft_add_dummy(root, letter, &(*matrix_stk))))
-			return (NULL);
-	}
+	if (-1 == ft_add_dummy(root, letter, &(*matrix_stk), dummy))
+		return (NULL);
 	return (root);
 }
