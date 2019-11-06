@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 15:32:11 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:22:02 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_stack	*ft_stacknew(t_link *link)
 {
 	t_stack *ret;
 
-	if (!(ret = (t_stack*)malloc(sizeof(t_stack*))))
+	if (!(ret = (t_stack*)malloc(sizeof(t_stack))))
 		return (NULL);
 	if (!link)
 		ret->link = NULL;

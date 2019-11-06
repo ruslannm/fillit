@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 14:35:41 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/04 16:51:57 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:27:35 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ int			ft_check_tetra(char *s, t_list **income)
 	s = ft_move_tetra(s, 4 * 4);
 	if (!(new = ft_lstnew(s, 17)))
 		return (-1);
-	ft_lstaddback(income, new);
+	ft_lstaddback(&(*income), new);
 	return (0);
 }
