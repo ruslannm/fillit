@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 17:53:58 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 17:57:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,6 @@ int			ft_solution(t_list *income, int square_len, int qnt)
 	ft_del_stack(solution);
 	ft_del_root(matrix_stk);
 	return (ret);
-}
-
-
-static void	ft_del(void *content, size_t len)
-{
-	ft_bzero(content, len);
-	free(content);
 }
 
 int			main(int argc, char **argv)

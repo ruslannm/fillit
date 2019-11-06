@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 17:13:22 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 17:57:02 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ int		ft_check_solution(t_stack *solution, int qnt);
 int		ft_check_root(t_link *root, int qnt);
 int		ft_count_row(t_link *top);
 void	ft_del_root(t_stack *stack);
+void	ft_del(void *content, size_t len);
 
 #endif
