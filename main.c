@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 17:57:15 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 18:03:45 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,21 @@ int			ft_read(int fd, t_list **income, char *str)
 void		ft_put_solution(t_stack *solution, int square_len)
 {
 	char	*ret;
-	t_stack	*tmp;
 	t_link	*link;
 	int		i;
 
 	if (!(ret = ft_strnew_char(square_len * square_len, '.')))
 		return ;
-	tmp = solution;
-	while (tmp)
+	while (solution)
 	{
-		link = (tmp->link)->right;
+		link = (solution->link)->right;
 		while (link != link->root_side)
 		{
 			if (link->letter < 27)
 				ret[link->bit] = link->letter + 64;
 			link = link->right;
 		}
-		tmp = tmp->next;
+		solution = solution->next;
 	}
 	i = 0;
 	while (i < square_len)
