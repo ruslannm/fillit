@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 15:34:24 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:16:56 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,13 @@ int			ft_solution(t_list *income, int square_len, int qnt)
 	t_stack	*matrix_stk;
 
 	matrix_stk = NULL;
-	root = ft_fill_matrix(income, square_len, &matrix_stk, 'y');
 	solution = NULL;
+	root = ft_fill_matrix(income, square_len, &matrix_stk, 'y');
 	ret = ft_dancing_links_fast(root, ft_row_for_seach_fast(root), &solution,
 								qnt);
 	ft_del_stack(solution);
+	ft_del_root(matrix_stk);
+	matrix_stk = NULL;
 	solution = NULL;
 	if (ret)
 	{
@@ -108,6 +110,7 @@ int			ft_solution(t_list *income, int square_len, int qnt)
 	else
 		ret = ft_solution(income, square_len + 1, qnt);
 	ft_del_stack(solution);
+	ft_del_root(matrix_stk);
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 15:02:37 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:17:09 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int     ft_size_tetra(char *tetra);
 int		ft_check_solution(t_stack *solution, int qnt);
 int		ft_check_root(t_link *root, int qnt);
 int		ft_count_row(t_link *top);
+void	ft_del_root(t_stack *stack);
 
 #endif
