@@ -6,20 +6,22 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 14:28:05 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/06 13:14:52 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:46:59 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_link	*ft_add_dummy(t_link *root, unsigned char letter, t_stack **matrix_stk)
+t_link	*ft_add_dummy(t_link *root, t_stack **matrix_stk)
 {
 	unsigned char	pt;
 	unsigned char	len;
+	unsigned char	letter;
 	t_link			*new;
 
 	pt = 0;
 	len = root->bit * root->bit;
+	letter = root->up->letter;
 	while (pt < len && letter * 4 < len)
 	{
 		if (!(new = ft_create_blank_line(2, matrix_stk)))
