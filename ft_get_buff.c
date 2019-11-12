@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:46:27 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/12 16:57:34 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/12 17:40:18 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_get_buff(int fd, char **line)
 	else
 	{
 		buff[buff_bytes] = '\0';
-		if (!(*line = strdup(buff)))
+		if (!(*line = ft_strdup(buff)))
 			ret = -1;
 	}
 	return (ret);
