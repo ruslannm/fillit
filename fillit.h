@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/08 19:01:02 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/12 15:18:34 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "get_next_line.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
 # include "libft.h"
-
+# define BUFF_SIZE 546
 
 typedef struct		s_link
 {
@@ -71,5 +73,6 @@ int					ft_count_row(t_link *top);
 void				ft_del_root(t_stack *solution, t_stack *root);
 void				ft_del(void *content, size_t len);
 void				ft_lstaddback(t_list **alst, t_list *new);
+int					ft_get_buff(int fd, char **line);
 
 #endif

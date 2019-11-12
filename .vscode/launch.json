@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/fillit",
 			"args": [
-				"${workspaceFolder}/test/valid_19"
+				"${workspaceFolder}/test02"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",

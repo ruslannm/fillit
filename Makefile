@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+         #
+#    By: rgero <rgero@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 15:46:56 by rgero             #+#    #+#              #
-#    Updated: 2019/11/08 19:01:02 by fprovolo         ###   ########.fr        #
+#    Updated: 2019/11/12 15:20:15 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_PATH = ./
 SRC_NAME = main.c ft_move_tetra.c ft_sqrt.c ft_fill_matrix.c \
@@ -22,7 +22,8 @@ SRC_NAME = main.c ft_move_tetra.c ft_sqrt.c ft_fill_matrix.c \
 	ft_create_blank_line.c ft_add_dummy.c ft_delete_dl.c \
 	ft_strnew_char.c ft_size_tetra.c ft_init_header.c \
 	ft_check_links.c ft_lstaddback.c \
-	ft_row_for_search.c ft_delete_root.c ft_del_content.c
+	ft_row_for_search.c ft_delete_root.c ft_del_content.c \
+	ft_get_buff.c
 
 OBJ_PATH = ./
 OBJ_NAME = $(SRC_NAME:.c=.o)

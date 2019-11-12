@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/11 15:40:06 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/12 15:51:49 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,32 @@ int			ft_read(int fd, t_list **income, char *str)
 	int		i;
 	char	tet[17];
 	int		err;
+	char	*tmp;
+	char	*buff_pos;
 
 	i = 0;
-	err = 0;
-	while (get_next_line(fd, &str) == 1 && err == 0)
+	err = ft_get_buff(fd, &str);
+	if (!err)	
 	{
-		if (i % 5 != 4)
+		tmp = str;
+		while ((buff_pos = ft_strchr(tmp, '\n')) && !err)
 		{
-			if (ft_strlen(str) != 4)
-				err = -1;
-			else
-				ft_strcpy(&tet[(i % 5) * 4], str);
-			if ((i + 1) % 5 == 4)
-				err = ft_check_tetra(tet, income);
+			if (i % 5 != 4)
+			{
+				if ((buff_pos - tmp) != 4)
+					err = -1;
+				else
+					ft_strncpy(&tet[(i % 5) * 4], tmp, 4);
+				if ((i + 1) % 5 == 4)
+					err = ft_check_tetra(tet, income);
+			}
+			else if ((buff_pos - tmp) != 1)
+					err = -1;
+			tmp = buff_pos + 1; 
+			i++;
 		}
-		else if (ft_strlen(str) != 0)
-			err = -1;
-		i++;
 		free(str);
 	}
-	free(str);
 	return (err == -1 || (i + 1) % 5 != 0 ? -1 : (i + 1) / 5);
 }
 
