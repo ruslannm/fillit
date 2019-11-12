@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 20:25:21 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/11 15:40:06 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,28 +117,26 @@ int			main(int argc, char **argv)
 {
 	int		fd;
 	int		qnt;
-	int		square_len;
 	t_list	*income;
 
-	if (argc != 2)
+	if (argc == 2)
 	{
-		ft_putstr("usage: ./fillit tetriminos_file\n");
-		return (0);
-	}
-	fd = open(argv[1], O_RDONLY);
-	income = NULL;
-	if (fd > 0)
-	{
-		qnt = ft_read(fd, &income, NULL);
-		if (qnt < 0 || qnt > 26)
-			ft_putstr("error\n");
-		else
+		fd = open(argv[1], O_RDONLY);
+		income = NULL;
+		if (fd > 0)
 		{
-			square_len = ft_square_len(qnt * 4, income);
-			ft_solution(income, square_len, qnt);
-			ft_lstdel(&income, &ft_del);
+			qnt = ft_read(fd, &income, NULL);
+			if (qnt < 0 || qnt > 26)
+				ft_putstr("error\n");
+			else
+			{
+				ft_solution(income, ft_square_len(qnt * 4, income), qnt);
+				ft_lstdel(&income, &ft_del);
+			}
+			close(fd);
 		}
-		close(fd);
 	}
+	else
+		ft_putstr("usage: ./fillit tetriminos_file\n");
 	return (0);
 }
