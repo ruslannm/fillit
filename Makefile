@@ -6,14 +6,14 @@
 #    By: rgero <rgero@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 15:46:56 by rgero             #+#    #+#              #
-#    Updated: 2019/11/12 15:20:15 by rgero            ###   ########.fr        #
+#    Updated: 2019/11/12 17:34:00 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC_PATH = ./
 SRC_NAME = main.c ft_move_tetra.c ft_sqrt.c ft_fill_matrix.c \
