@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:20:34 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/06 18:49:49 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/12 16:25:49 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ void	ft_del_root(t_stack *solution, t_stack *root)
 	ft_del_stack(solution);
 	while (root)
 		ft_delete_link(&root);
+}
+
+void	ft_init_stack(t_stack **solution, t_stack **root)
+{
+	*solution = NULL;
+	*root = NULL;
 }

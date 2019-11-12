@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/12 15:18:34 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/12 16:25:57 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void				ft_del_root(t_stack *solution, t_stack *root);
 void				ft_del(void *content, size_t len);
 void				ft_lstaddback(t_list **alst, t_list *new);
 int					ft_get_buff(int fd, char **line);
+void				ft_init_stack(t_stack **solution, t_stack **root);
 
 #endif
