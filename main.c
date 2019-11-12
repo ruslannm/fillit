@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/12 16:55:09 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/12 17:23:40 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,8 @@ int			main(int argc, char **argv)
 		income = NULL;
 		if (fd > 0)
 		{
-			qnt = ft_read(fd, &income, NULL, -1);
-			if (qnt < 0 || qnt > 26)
-				ft_putstr("error\n");
+			if ((qnt = ft_read(fd, &income, NULL, -1)) < 0)
+				ft_putendl("error");
 			else
 			{
 				ft_solution(income, ft_square_len(qnt * 4, income), qnt);
@@ -133,8 +132,10 @@ int			main(int argc, char **argv)
 			}
 			close(fd);
 		}
+		else
+			ft_putendl("usage: ./fillit tetriminos_file");
 	}
 	else
-		ft_putstr("usage: ./fillit tetriminos_file\n");
+		ft_putendl("usage: ./fillit tetriminos_file");
 	return (0);
 }
