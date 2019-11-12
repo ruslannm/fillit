@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/12 16:25:57 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/12 16:51:45 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ void				ft_del(void *content, size_t len);
 void				ft_lstaddback(t_list **alst, t_list *new);
 int					ft_get_buff(int fd, char **line);
 void				ft_init_stack(t_stack **solution, t_stack **root);
+int					ft_check_tetra_line(char *buff_pos, char *tmp, char *tet);
 
 #endif

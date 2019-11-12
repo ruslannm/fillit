@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/12 16:27:08 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/12 16:55:09 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,20 @@ int			ft_read(int fd, t_list **income, char *str, int i)
 	char	*buff_pos;
 
 	err = ft_get_buff(fd, &str);
-	if (!err)	
+	if (!err)
 	{
 		tmp = str;
 		while ((buff_pos = ft_strchr(tmp, '\n')) && !err)
 		{
 			if (++i % 5 != 4)
 			{
-				if ((buff_pos - tmp) != 4)
-					err = -1;
-				else
-					ft_strncpy(&tet[(i % 5) * 4], tmp, 4);
+				err = ft_check_tetra_line(buff_pos, tmp, &tet[(i % 5) * 4]);
 				if ((i + 1) % 5 == 4)
 					err = ft_check_tetra(tet, income);
 			}
 			else if (buff_pos != tmp)
-					err = -1;
-			tmp = buff_pos + 1; 
+				err = -1;
+			tmp = buff_pos + 1;
 		}
 		free(str);
 	}
