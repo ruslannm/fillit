@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 14:28:05 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/06 18:15:15 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/13 14:53:09 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int		ft_add_dummy(t_link *root, t_stack **matrix_stk)
 	while (pt < len && letter * 4 < len)
 	{
 		if (!(new = ft_create_blank_line(2, matrix_stk)))
-		{
-			ft_free_matrix(root);
 			return (-1);
-		}
 		new->letter = 27 + pt;
 		new->bit = 99;
 		new->right->letter = 27 + pt;

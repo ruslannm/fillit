@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:16:01 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/12 16:51:45 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/13 14:53:09 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int					ft_dancing_links_fast(t_link *root, t_stack *stack_row,
 int					ft_sqrt(int nb);
 int					ft_check_fit(char *tet, int pt, int size);
 t_link				*ft_create_blank_line(int len, t_stack **matrix_stk);
-void				ft_free_line(t_link *line);
-void				ft_free_matrix(t_link *root);
 t_link				*ft_fill_matrix(t_list *income, int size,
 					t_stack **matrix_stk, char dummy);
 t_link				*ft_init_header(int size, t_stack **matrix_stk);

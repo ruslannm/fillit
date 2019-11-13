@@ -6,7 +6,7 @@
 /*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:55:51 by fprovolo          #+#    #+#             */
-/*   Updated: 2019/11/06 13:17:08 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/13 14:53:09 by fprovolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,4 @@ t_link	*ft_create_blank_line(int len, t_stack **matrix_stk)
 		i++;
 	}
 	return (ptr);
-}
-
-void	ft_free_line(t_link *line)
-{
-	t_link	*del;
-
-	line = line->right;
-	while (line != line->root_side)
-	{
-		del = line;
-		line = line->right;
-		free(del);
-	}
-	free(line);
-	return ;
-}
-
-void	ft_free_matrix(t_link *ptr)
-{
-	t_link	*del;
-
-	ptr = ptr->down;
-	while (ptr != ptr->root_top)
-	{
-		del = ptr;
-		ptr = ptr->down;
-		ft_free_line(del);
-	}
-	ft_free_line(ptr);
-	return ;
 }
