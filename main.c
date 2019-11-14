@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprovolo <fprovolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/13 14:50:30 by fprovolo         ###   ########.fr       */
+/*   Updated: 2019/11/14 14:45:22 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int			main(int argc, char **argv)
 			close(fd);
 		}
 		else
-			ft_putendl("usage: ./fillit tetriminos_file");
+			ft_putendl("error");
 	}
 	else
 		ft_putendl("usage: ./fillit tetriminos_file");
