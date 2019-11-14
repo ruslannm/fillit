@@ -6,7 +6,7 @@
 /*   By: rgero <rgero@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:15:31 by rgero             #+#    #+#             */
-/*   Updated: 2019/11/14 14:45:22 by rgero            ###   ########.fr       */
+/*   Updated: 2019/11/14 16:07:16 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,8 @@ int			main(int argc, char **argv)
 			if ((qnt = ft_read(fd, &income, NULL, -1)) < 0)
 				ft_putendl("error");
 			else
-			{
 				ft_solution(income, ft_square_len(qnt * 4, income), qnt);
-				ft_lstdel(&income, &ft_del);
-			}
+			ft_lstdel(&income, &ft_del);
 			close(fd);
 		}
 		else
